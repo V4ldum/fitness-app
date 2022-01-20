@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:fitness_app/constants.dart';
+import 'package:flutter/material.dart';
 
 class LoginField extends StatefulWidget {
   final String hint;
   final IconData icon;
   final bool obscure;
+  final Function(String) onChanged;
 
   const LoginField({
     Key? key,
     this.hint = "",
     this.icon = Icons.device_unknown,
     this.obscure = false,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -29,6 +31,7 @@ class _LoginFieldState extends State<LoginField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: widget.onChanged,
       obscureText: widget.obscure,
       autocorrect: false,
       decoration: kLoginTextFieldStyle.copyWith(

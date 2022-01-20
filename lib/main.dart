@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:fitness_app/constants.dart';
 import 'package:fitness_app/view/screens/clock_screen.dart';
-import 'package:fitness_app/view/screens/day_screen.dart';
 import 'package:fitness_app/view/screens/login_screen.dart';
 import 'package:fitness_app/view/screens/preview_screen.dart';
 import 'package:fitness_app/view/screens/program_screen.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         ClockScreen.route: (context) => const ClockScreen(),
-        DayScreen.route: (context) => const DayScreen(),
         LoginScreen.route: (context) => const LoginScreen(),
         PreviewScreen.route: (context) => const PreviewScreen(),
         ProgramScreen.route: (context) => const ProgramScreen(),

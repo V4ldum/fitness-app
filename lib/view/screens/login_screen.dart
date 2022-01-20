@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
+import 'package:fitness_app/constants.dart';
+import 'package:fitness_app/controller/login_manager.dart';
+import 'package:fitness_app/model/error_type.dart';
 import 'package:fitness_app/view/components/login_button.dart';
 import 'package:fitness_app/view/components/login_field.dart';
-import 'package:fitness_app/controller/login_manager.dart';
-import 'package:fitness_app/constants.dart';
 import 'package:fitness_app/view/screens/preview_screen.dart';
-import 'package:fitness_app/model/error_type.dart';
+import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   static String route = "login";
@@ -20,6 +19,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _showSpinner = false;
+  late String username;
+  late String password;
+
+  @override
+  void initState() {
+    super.initState();
+    username = "";
+    password = "";
+  }
 
   void _openAlert(BuildContext context, ErrorType e) {
     Map<ErrorType, List<String>> errorData = {
@@ -78,15 +86,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 30.0),
-                const LoginField(
+                LoginField(
                   hint: kLoginHintString,
                   icon: Icons.person,
+                  onChanged: (String value) {
+                    username = value;
+                  },
                 ),
                 const SizedBox(height: 30.0),
-                const LoginField(
+                LoginField(
                   hint: kPasswordHintString,
                   icon: Icons.lock,
                   obscure: true,
+                  onChanged: (String value) {
+                    password = value;
+                  },
                 ),
                 const SizedBox(height: 30.0),
                 Row(
@@ -113,12 +127,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     LoginButton(
                       text: kSignInButtonString,
                       onPressedCallback: () async {
-                        //TODO get informations
-                        if (await LoginManager.login("toto", "toto")) {
-                          Navigator.pushNamed(context, PreviewScreen.route);
+                        setState(() {
+                          _showSpinner = true;
+                        });
+                        if (await LoginManager.login(username, password)) {
+                          Navigator.pushReplacementNamed(
+                              context, PreviewScreen.route);
                         } else {
                           _openAlert(context, ErrorType.password);
                         }
+                        setState(() {
+                          _showSpinner = false;
+                        });
                       },
                     ),
                   ],
