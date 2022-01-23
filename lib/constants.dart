@@ -27,7 +27,6 @@ const String kLoginAlertButtonString = "OK";
 
 //*** LITERALS ***//
 const Color kPrimaryColor = Color(0xFFCD994C);
-const Color kSecondaryColor = Color(0x00000000); //TODO choisir ou retirer
 const Color kPrimaryDarkColor = Color(0xFF242424);
 const Color kShadeDarkColor = Colors.black54;
 const Color kTintDarkColor = Color(0xFF3A3A3A);
@@ -117,4 +116,18 @@ const TextStyle kPreviewBlocSubtitleTextStyle = TextStyle(
 const TextStyle kPreviewBlocContentTextStyle = TextStyle(
   fontFamily: 'OpenSans',
   fontSize: 16.0,
+);
+
+ButtonStyle kProgramButtonTextStyle = ButtonStyle(
+  backgroundColor: MaterialStateProperty.all<Color>(kPrimaryColor),
+  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(4.0),
+        bottomLeft: Radius.circular(8.0),
+        bottomRight: Radius.circular(0.0),
+      ),
+    ),
+  ),
 );

@@ -3,7 +3,7 @@ import 'package:fitness_app/controller/login_manager.dart';
 import 'package:fitness_app/model/error_type.dart';
 import 'package:fitness_app/view/components/login_button.dart';
 import 'package:fitness_app/view/components/login_field.dart';
-import 'package:fitness_app/view/screens/preview_screen.dart';
+import 'package:fitness_app/view/screens/week_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                         if (await LoginManager.login(username, password)) {
                           Navigator.pushReplacementNamed(
-                              context, PreviewScreen.route);
+                              context, WeekScreen.route);
                         } else {
                           _openAlert(context, ErrorType.password);
                         }

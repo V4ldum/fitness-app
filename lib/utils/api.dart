@@ -8,8 +8,8 @@ abstract class API {
     return username == "test" && password == "test";
   }
 
-  static Future programOfTheWeek() async {
+  static Future<List> programOfTheWeek() async {
     //emulate API call
-    return json.decode(await rootBundle.loadString('program_data.json'));
+    return json.decode(await rootBundle.loadString('assets/program_data.json'));
   }
 }

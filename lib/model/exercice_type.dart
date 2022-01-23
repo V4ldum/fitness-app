@@ -1,5 +1,5 @@
 enum BlocType {
-  serie,
+  set,
   amrap,
   forTime,
   emom,

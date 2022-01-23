@@ -11,7 +11,7 @@ class CardBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        Divider(),
+        Divider(color: kTintDarkColor),
         Text.rich(
           TextSpan(
             text: "Bloc I",
@@ -27,7 +27,7 @@ class CardBody extends StatelessWidget {
         Text("\t\tPower Clean Squat + Thruster x4",
             style: kPreviewBlocContentTextStyle),
         Text("\t\tToes to Bar x6-10", style: kPreviewBlocContentTextStyle),
-        Divider(),
+        Divider(color: kTintDarkColor),
         Text.rich(
           TextSpan(
             text: "Bloc II",
@@ -41,7 +41,7 @@ class CardBody extends StatelessWidget {
           ),
         ),
         Text("\t\tRomanian Deadlift x25", style: kPreviewBlocContentTextStyle),
-        Divider(),
+        Divider(color: kTintDarkColor),
         Text.rich(
           TextSpan(
             text: "Bloc III",

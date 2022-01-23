@@ -1,10 +1,14 @@
 import 'package:fitness_app/constants.dart';
+import 'package:fitness_app/model/daily_program.dart';
 import 'package:fitness_app/view/components/card_body.dart';
 import 'package:flutter/material.dart';
 
 class DayCard extends StatefulWidget {
+  final DailyProgram program;
+
   const DayCard({
     Key? key,
+    required this.program,
   }) : super(key: key);
 
   @override
@@ -19,7 +23,7 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
   void _prepareAnimations() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
     );
     _animation = CurvedAnimation(
       parent: _controller,
@@ -33,7 +37,7 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
     } else {
       _controller.forward();
     }
-    Future.delayed(const Duration(milliseconds: 475), () {
+    Future.delayed(const Duration(milliseconds: 275), () {
       setState(() {
         _isVisible = !_isVisible;
       });
@@ -54,53 +58,85 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: kTintDarkColor,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          top: 10.0,
-          left: 15.0,
-          right: 15.0,
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 1.0),
+      child: Card(
+        color: kTintDarkColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Lundi", style: kPreviewTitleTextStyle),
-                    const Text("Lower Body", style: kPreviewSubtitleTextStyle),
-                    SizeTransition(
-                      axisAlignment: -1.0, //align top
-                      sizeFactor: _animation,
-                      child: const CardBody(),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 15.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(widget.program.title,
+                            style: kPreviewTitleTextStyle),
+                        Text(widget.program.subtitle,
+                            style: kPreviewSubtitleTextStyle),
+                        SizeTransition(
+                          axisAlignment: -1.0, //align top
+                          sizeFactor: _animation,
+                          child: const CardBody(),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const Icon(
-                  Icons.arrow_forward_rounded, //TODO bouton play
-                  color: kPrimaryColor,
-                  size: 30.0,
-                )
-              ],
+                  ),
+                  widget.program.isRestDay
+                      ? const SizedBox()
+                      : TextButton(
+                          style: kProgramButtonTextStyle,
+                          onPressed: () {
+                            print("pressed"); //TODO Navigation
+                          },
+                          child: const Icon(
+                            Icons.play_arrow_rounded,
+                            color: kTintDarkColor,
+                            size: 30.0,
+                          ),
+                        )
+                ],
+              ),
             ),
-            TextButton(
-              onPressed: () {
-                setState(_changeExpansionState);
-              },
-              style: TextButton.styleFrom(
-                splashFactory: NoSplash.splashFactory,
-                padding: EdgeInsets.zero,
+            Padding(
+              padding: const EdgeInsets.only(
+                bottom: 10.0,
+                left: 15.0,
+                right: 15.0,
               ),
-              child: Icon(
-                _isVisible
-                    ? Icons.keyboard_arrow_up
-                    : Icons.keyboard_arrow_down,
-              ),
+              child: widget.program.isRestDay
+                  ? Column(
+                      children: [
+                        const Divider(color: kTintDarkColor),
+                        Text(widget.program.text,
+                            style: kPreviewBlocContentTextStyle),
+                      ],
+                    )
+                  : SizedBox(
+                      height: 25.0,
+                      child: TextButton(
+                        onPressed: () {
+                          setState(_changeExpansionState);
+                        },
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                          padding: EdgeInsets.zero,
+                        ),
+                        child: Icon(
+                          _isVisible
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                        ),
+                      ),
+                    ),
             ),
           ],
         ),
