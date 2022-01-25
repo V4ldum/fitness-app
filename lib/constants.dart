@@ -131,3 +131,10 @@ ButtonStyle kProgramButtonTextStyle = ButtonStyle(
     ),
   ),
 );
+
+BoxDecoration kShimmerCardBoxDecoration = BoxDecoration(
+  color: Colors.grey[700],
+  borderRadius: const BorderRadius.all(
+    Radius.circular(3.0),
+  ),
+);

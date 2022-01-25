@@ -1,16 +1,56 @@
 import 'package:fitness_app/constants.dart';
+import 'package:fitness_app/model/bloc.dart';
+import 'package:fitness_app/model/exercise.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatelessWidget {
+  final List<Bloc> blocs;
+
   const CardBody({
     Key? key,
+    this.blocs = const [],
   }) : super(key: key);
+
+  List<Widget> _cardBodyContent() {
+    List<Widget> out = [];
+
+    for (int i = 0; i < blocs.length; i++) {
+      out.add(const Divider(color: kTintDarkColor));
+      out.add(
+        Text.rich(
+          TextSpan(
+            text: "Bloc ${'I' * (i + 1)}", //only I -> III
+            style: kPreviewBlocTitleTextStyle,
+            children: [
+              TextSpan(
+                text: " - ${blocs[i]}",
+                style: kPreviewBlocSubtitleTextStyle,
+              )
+            ],
+          ),
+        ),
+      );
+      for (Exercise e in blocs[i].exercises) {
+        out.add(
+          Text("\t\t$e", style: kPreviewBlocContentTextStyle),
+        );
+      }
+    }
+
+    return out;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: _cardBodyContent(),
+    );
+  }
+}
+
+/*
+const [
         Divider(color: kTintDarkColor),
         Text.rich(
           TextSpan(
@@ -59,6 +99,4 @@ class CardBody extends StatelessWidget {
         Text("\t\tGoblet Walk x50pas", style: kPreviewBlocContentTextStyle),
         Text("\t\tAbdos x20", style: kPreviewBlocContentTextStyle),
       ],
-    );
-  }
-}
+ */

@@ -12,7 +12,7 @@ class WeekScreen extends StatelessWidget {
   const WeekScreen({Key? key}) : super(key: key);
 
   Widget _errorBuilder(error) {
-    return Text("$error"); //TODO error
+    return const Text("Error"); //TODO error
   }
 
   Widget _waitingBuilder() {
@@ -24,7 +24,7 @@ class WeekScreen extends StatelessWidget {
         ShimmerDayCard(),
         ShimmerDayCard(),
       ],
-    ); //TODO waiting
+    );
   }
 
   Widget _doneBuilder(List data) {
@@ -47,7 +47,7 @@ class WeekScreen extends StatelessWidget {
       if (snapshot.hasError == true) {
         return _errorBuilder(snapshot.error);
       }
-      return _doneBuilder(snapshot.data!);
+      return _errorBuilder(snapshot.data!);
     }
     return _waitingBuilder();
   }

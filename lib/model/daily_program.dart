@@ -1,4 +1,10 @@
+import 'package:fitness_app/model/amrap.dart';
 import 'package:fitness_app/model/bloc.dart';
+import 'package:fitness_app/model/emom.dart';
+import 'package:fitness_app/model/exercise_set.dart';
+import 'package:fitness_app/model/exercise_type.dart';
+import 'package:fitness_app/model/for_time.dart';
+import 'package:fitness_app/model/tabata.dart';
 
 class DailyProgram {
   String title;
@@ -20,8 +26,19 @@ class DailyProgram {
   factory DailyProgram.fromJson(Map<String, dynamic> json) {
     List jsonBlocs = json["blocs"] ?? [];
     List<Bloc> blocs = [];
+    Map<BlocType, Bloc Function(Map<String, dynamic>)> types = {
+      BlocType.set: ExerciseSet.fromJson,
+      BlocType.amrap: AMRAP.fromJson,
+      BlocType.forTime: ForTime.fromJson,
+      BlocType.emom: EMOM.fromJson,
+      BlocType.tabata: Tabata.fromJson,
+    };
 
-    jsonBlocs.map((element) => blocs.add(Bloc.fromJson(element)));
+    for (var element in jsonBlocs) {
+      Function(Map<String, dynamic>) exerciseConstructor =
+          types[BlocType.values[element["type"]]]!;
+      blocs.add(exerciseConstructor(element));
+    }
 
     return DailyProgram(
       title: json["title"],

@@ -1,6 +1,6 @@
-import 'package:fitness_app/model/exercice.dart';
+import 'package:fitness_app/model/exercise.dart';
 
-class Bloc {
+abstract class Bloc {
   int sets;
   late Duration rest;
   List<Exercise> exercises;
@@ -16,17 +16,6 @@ class Bloc {
     rest = Duration(seconds: restSeconds, minutes: restMinutes);
   }
 
-  factory Bloc.fromJson(Map<String, dynamic> json) {
-    List jsonExercises = json["exercises"];
-    List<Exercise> exercises = [];
-
-    jsonExercises.map((element) => exercises.add(Exercise.fromJson(element)));
-
-    return Bloc(
-      sets: json["details"]["sets"] ?? 1,
-      restSeconds: json["details"]["rest_duration"]["sec"] ?? 0,
-      restMinutes: json["details"]["rest_duration"]["min"] ?? 0,
-      exercises: exercises,
-    );
-  }
+  @override
+  String toString();
 }

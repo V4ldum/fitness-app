@@ -82,11 +82,6 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
                             style: kPreviewTitleTextStyle),
                         Text(widget.program.subtitle,
                             style: kPreviewSubtitleTextStyle),
-                        SizeTransition(
-                          axisAlignment: -1.0, //align top
-                          sizeFactor: _animation,
-                          child: const CardBody(),
-                        ),
                       ],
                     ),
                   ),
@@ -104,6 +99,16 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
                           ),
                         )
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 15.0,
+              ),
+              child: SizeTransition(
+                axisAlignment: -1.0, //align top
+                sizeFactor: _animation,
+                child: CardBody(blocs: widget.program.blocs),
               ),
             ),
             Padding(

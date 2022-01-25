@@ -6,7 +6,11 @@
       {
         "type": 3,
         "details": {
-          "set_duration": {
+          "rest_duration": {
+            "min": 0,
+            "sec": 0
+          },
+          "work_duration": {
             "min": 2,
             "sec": 0
           },
@@ -41,7 +45,11 @@
       {
         "type": 3,
         "details": {
-          "set_duration": {
+          "rest_duration": {
+            "min": 0,
+            "sec": 0
+          },
+          "work_duration": {
             "min": 2,
             "sec": 0
           },
@@ -78,7 +86,7 @@
             "sec": 20
           },
           "rest_duration": {
-            "min": 12,
+            "min": 0,
             "sec": 10
           }
         },
@@ -118,11 +126,11 @@
       {
         "type": 1,
         "details": {
+          "sets": 3,
           "set_duration": {
             "min": 2,
             "sec": 0
           },
-          "sets": 3,
           "rest_duration": {
             "min": 1,
             "sec": 0
@@ -145,6 +153,10 @@
           "sets": 1,
           "time_cap": {
             "min": 15,
+            "sec": 0
+          },
+          "set_duration": {
+            "min": 0,
             "sec": 0
           }
         },
@@ -197,11 +209,11 @@
       {
         "type": 1,
         "details": {
+          "sets": 4,
           "set_duration": {
             "min": 2,
             "sec": 0
           },
-          "sets": 4,
           "rest_duration": {
             "min": 1,
             "sec": 0
@@ -221,11 +233,11 @@
       {
         "type": 1,
         "details": {
+          "sets": 4,
           "set_duration": {
             "min": 2,
             "sec": 0
           },
-          "sets": 4,
           "rest_duration": {
             "min": 0,
             "sec": 30
@@ -255,7 +267,11 @@
       {
         "type": 3,
         "details": {
-          "set_duration": {
+          "rest_duration": {
+            "min": 0,
+            "sec": 0
+          },
+          "work_duration": {
             "min": 2,
             "sec": 30
           },
@@ -282,7 +298,11 @@
       {
         "type": 3,
         "details": {
-          "set_duration": {
+          "rest_duration": {
+            "min": 0,
+            "sec": 0
+          },
+          "work_duration": {
             "min": 2,
             "sec": 30
           },
@@ -310,7 +330,14 @@
         "type": 2,
         "details": {
           "sets": 1,
-          "time_cap": null
+          "time_cap": {
+            "sec": 0,
+            "min": 0
+          },
+          "set_duration": {
+            "sec": 0,
+            "min": 0
+          }
         },
         "exercises": [
           {
