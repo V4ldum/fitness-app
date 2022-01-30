@@ -5,7 +5,7 @@ class Exercise {
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
     return Exercise(
-      name: json["name"]!,
+      name: json["name"] ?? "Error",
     );
   }
 

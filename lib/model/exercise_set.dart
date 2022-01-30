@@ -20,7 +20,7 @@ class ExerciseSet extends Bloc {
         );
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) {
-    List jsonExercises = json["exercises"];
+    List jsonExercises = json["exercises"] ?? [];
     List<Exercise> exercises = [];
 
     for (var element in jsonExercises) {
@@ -28,9 +28,9 @@ class ExerciseSet extends Bloc {
     }
 
     return ExerciseSet(
-      sets: json["details"]["sets"] ?? 1,
-      restSeconds: json["details"]["rest_duration"]["sec"] ?? 0,
-      restMinutes: json["details"]["rest_duration"]["min"] ?? 0,
+      sets: json["details"]?["sets"] ?? 1,
+      restSeconds: json["details"]?["rest_duration"]?["sec"] ?? 0,
+      restMinutes: json["details"]?["rest_duration"]?["min"] ?? 0,
       exercises: exercises,
     );
   }
@@ -40,11 +40,15 @@ class ExerciseSet extends Bloc {
     StringBuffer out = StringBuffer();
 
     // Number of sets
-    out.write("$sets Séries - ");
+    out.write("$sets Série");
 
-    // Rest duration
-    out.write(Converter.durationToString(rest));
-    out.write(" Repos");
+    if (sets > 1) {
+      out.write("s - ");
+
+      // Rest duration
+      out.write(Converter.durationToString(rest));
+      out.write(" Repos");
+    }
 
     return "$out";
   }

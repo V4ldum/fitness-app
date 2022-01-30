@@ -34,7 +34,7 @@ class Tabata extends Bloc {
   }
 
   factory Tabata.fromJson(Map<String, dynamic> json) {
-    List jsonExercises = json["exercises"];
+    List jsonExercises = json["exercises"] ?? [];
     List<Exercise> exercises = [];
 
     for (var element in jsonExercises) {
@@ -42,13 +42,13 @@ class Tabata extends Bloc {
     }
 
     return Tabata(
-      sets: json["details"]["sets"] ?? 1,
-      workMinutes: json["details"]["work_duration"]["min"] ?? 0,
-      workSeconds: json["details"]["work_duration"]["sec"] ?? 0,
-      restSeconds: json["details"]["rest_duration"]["sec"] ?? 0,
-      restMinutes: json["details"]["rest_duration"]["min"] ?? 0,
-      pauseMinutes: json["details"]["break_duration"]["min"] ?? 0,
-      pauseSeconds: json["details"]["break_duration"]["sec"] ?? 0,
+      sets: json["details"]?["sets"] ?? 1,
+      workMinutes: json["details"]?["work_duration"]?["min"] ?? 0,
+      workSeconds: json["details"]?["work_duration"]?["sec"] ?? 0,
+      restSeconds: json["details"]?["rest_duration"]?["sec"] ?? 0,
+      restMinutes: json["details"]?["rest_duration"]?["min"] ?? 0,
+      pauseMinutes: json["details"]?["pause_duration"]?["min"] ?? 0,
+      pauseSeconds: json["details"]?["pause_duration"]?["sec"] ?? 0,
       exercises: exercises,
     );
   }
@@ -58,17 +58,25 @@ class Tabata extends Bloc {
     StringBuffer out = StringBuffer();
 
     // Number of cycles
-    out.write("$sets Cycles [ ");
+    if (sets == 1) {
+      out.write("$sets Cycle [");
+    } else {
+      out.write("$sets Cycles [");
+    }
 
     // Tabata information (work, rest)
     out.write(Converter.durationToString(work));
     out.write(" Work - ");
     out.write(Converter.durationToString(rest));
-    out.write(" Rest ] - ");
+    out.write(" Rest]");
 
-    // Break duration between cycles
-    out.write(Converter.durationToString(pause));
-    out.write(" Pause");
+    if (pause != Duration.zero) {
+      out.write(" - ");
+
+      // Break duration between cycles
+      out.write(Converter.durationToString(pause));
+      out.write(" Pause");
+    }
 
     return "$out";
   }

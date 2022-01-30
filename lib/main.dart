@@ -1,4 +1,5 @@
 import 'package:fitness_app/constants.dart';
+import 'package:fitness_app/model/daily_program.dart';
 import 'package:fitness_app/view/screens/clock_screen.dart';
 import 'package:fitness_app/view/screens/login_screen.dart';
 import 'package:fitness_app/view/screens/preview_screen.dart';
@@ -9,7 +10,6 @@ void main() {
   runApp(const MyApp());
 }
 
-// TODO write tests
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
         ClockScreen.route: (context) => const ClockScreen(),
         LoginScreen.route: (context) => const LoginScreen(),
         WeekScreen.route: (context) => const WeekScreen(),
-        PreviewScreen.route: (context) => const PreviewScreen(),
+        PreviewScreen.route: (context) => PreviewScreen(
+            program: (ModalRoute.of(context)?.settings.arguments!
+                as List<DailyProgram>)[0]),
       },
       initialRoute: LoginScreen.route,
     );

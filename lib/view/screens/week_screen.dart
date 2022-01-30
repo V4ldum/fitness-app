@@ -6,13 +6,53 @@ import 'package:fitness_app/view/components/my_app_bar.dart';
 import 'package:fitness_app/view/components/shimmer_day_card.dart';
 import 'package:flutter/material.dart';
 
-class WeekScreen extends StatelessWidget {
+class WeekScreen extends StatefulWidget {
   static String route = "week";
 
   const WeekScreen({Key? key}) : super(key: key);
 
+  @override
+  State<WeekScreen> createState() => _WeekScreenState();
+}
+
+class _WeekScreenState extends State<WeekScreen> {
   Widget _errorBuilder(error) {
-    return const Text("Error"); //TODO error
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Image(
+          height: 250.0,
+          image: AssetImage("assets/fatigue.png"),
+        ),
+        const SizedBox(height: 15.0),
+        const Text(
+          kConnectionErrorHeaderString,
+          textAlign: TextAlign.center,
+          style: kErrorHeaderStyle,
+        ),
+        const Text(
+          kConnectionErrorBodyString,
+          textAlign: TextAlign.center,
+          style: kErrorBodyStyle,
+        ),
+        const SizedBox(height: 15.0),
+        TextButton.icon(
+          onPressed: () {
+            setState(() {});
+          },
+          icon: const Icon(
+            Icons.refresh,
+            color: kPrimaryColor,
+          ),
+          label: const Text(
+            kRefreshButtonString,
+            style: kTextButtonStyle,
+          ),
+        ),
+        const SizedBox(height: 50.0),
+      ],
+    );
   }
 
   Widget _waitingBuilder() {
@@ -47,7 +87,7 @@ class WeekScreen extends StatelessWidget {
       if (snapshot.hasError == true) {
         return _errorBuilder(snapshot.error);
       }
-      return _errorBuilder(snapshot.data!);
+      return _doneBuilder(snapshot.data!);
     }
     return _waitingBuilder();
   }
@@ -62,8 +102,7 @@ class WeekScreen extends StatelessWidget {
         body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder(
-              future: ProgramManager
-                  .getProgramOfTheWeek(), //TODO Remove Future from Build?
+              future: ProgramManager.getProgramOfTheWeek(),
               builder: _futureBuilderContent,
             )),
       ),

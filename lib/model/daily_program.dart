@@ -41,8 +41,8 @@ class DailyProgram {
     }
 
     return DailyProgram(
-      title: json["title"],
-      subtitle: json["subtitle"],
+      title: json["title"] ?? "",
+      subtitle: json["subtitle"] ?? "",
       blocs: blocs,
       text: json["text"] ?? "",
     );

@@ -30,7 +30,7 @@ class ShimmerDayCard extends StatelessWidget {
                     children: [
                       Shimmer.fromColors(
                         baseColor: Colors.grey[700]!,
-                        highlightColor: Colors.grey,
+                        highlightColor: Colors.grey[600]!,
                         child: Container(
                           decoration: kShimmerCardBoxDecoration,
                           width: 130.0,
@@ -40,7 +40,7 @@ class ShimmerDayCard extends StatelessWidget {
                       const SizedBox(height: 8.0),
                       Shimmer.fromColors(
                         baseColor: Colors.grey[700]!,
-                        highlightColor: Colors.grey,
+                        highlightColor: Colors.grey[600]!,
                         child: Container(
                           decoration: kShimmerCardBoxDecoration,
                           width: 100.0,

@@ -6,17 +6,11 @@
       {
         "type": 3,
         "details": {
-          "rest_duration": {
-            "min": 0,
-            "sec": 0
-          },
           "work_duration": {
-            "min": 2,
-            "sec": 0
+            "min": 2
           },
-          "total_duration": {
-            "min": 12,
-            "sec": 0
+          "cap_duration": {
+            "min": 12
           }
         },
         "exercises": [
@@ -45,17 +39,11 @@
       {
         "type": 3,
         "details": {
-          "rest_duration": {
-            "min": 0,
-            "sec": 0
-          },
           "work_duration": {
-            "min": 2,
-            "sec": 0
+            "min": 2
           },
-          "total_duration": {
-            "min": 12,
-            "sec": 0
+          "cap_duration": {
+            "min": 12
           }
         },
         "exercises": [
@@ -77,16 +65,13 @@
         "type": 4,
         "details": {
           "sets": 3,
-          "break_duration": {
-            "min": 1,
-            "sec": 0
+          "pause_duration": {
+            "min": 1
           },
           "work_duration": {
-            "min": 0,
             "sec": 20
           },
           "rest_duration": {
-            "min": 0,
             "sec": 10
           }
         },
@@ -127,13 +112,11 @@
         "type": 1,
         "details": {
           "sets": 3,
-          "set_duration": {
-            "min": 2,
-            "sec": 0
+          "cap_duration": {
+            "min": 2
           },
           "rest_duration": {
-            "min": 1,
-            "sec": 0
+            "min": 1
           }
         },
         "exercises": [
@@ -150,14 +133,8 @@
       {
         "type": 2,
         "details": {
-          "sets": 1,
-          "time_cap": {
-            "min": 15,
-            "sec": 0
-          },
-          "set_duration": {
-            "min": 0,
-            "sec": 0
+          "cap_duration": {
+            "min": 15
           }
         },
         "exercises": [
@@ -191,8 +168,7 @@
         "details": {
           "sets": 3,
           "rest_duration": {
-            "min": 2,
-            "sec": 0
+            "min": 2
           }
         },
         "exercises": [
@@ -210,13 +186,11 @@
         "type": 1,
         "details": {
           "sets": 4,
-          "set_duration": {
-            "min": 2,
-            "sec": 0
+          "cap_duration": {
+            "min": 2
           },
           "rest_duration": {
-            "min": 1,
-            "sec": 0
+            "min": 1
           }
         },
         "exercises": [
@@ -234,12 +208,10 @@
         "type": 1,
         "details": {
           "sets": 4,
-          "set_duration": {
-            "min": 2,
-            "sec": 0
+          "cap_duration": {
+            "min": 2
           },
           "rest_duration": {
-            "min": 0,
             "sec": 30
           }
         },
@@ -267,17 +239,12 @@
       {
         "type": 3,
         "details": {
-          "rest_duration": {
-            "min": 0,
-            "sec": 0
-          },
           "work_duration": {
             "min": 2,
             "sec": 30
           },
-          "total_duration": {
-            "min": 10,
-            "sec": 0
+          "cap_duration": {
+            "min": 10
           }
         },
         "exercises": [
@@ -298,17 +265,12 @@
       {
         "type": 3,
         "details": {
-          "rest_duration": {
-            "min": 0,
-            "sec": 0
-          },
           "work_duration": {
             "min": 2,
             "sec": 30
           },
-          "total_duration": {
-            "min": 10,
-            "sec": 0
+          "cap_duration": {
+            "min": 10
           }
         },
         "exercises": [
@@ -328,17 +290,6 @@
       },
       {
         "type": 2,
-        "details": {
-          "sets": 1,
-          "time_cap": {
-            "sec": 0,
-            "min": 0
-          },
-          "set_duration": {
-            "sec": 0,
-            "min": 0
-          }
-        },
         "exercises": [
           {
             "name": "Oiseau x30",

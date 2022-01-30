@@ -13,7 +13,7 @@ class EMOM extends Bloc {
     int capSeconds = 0,
     int restSeconds = 0,
     int restMinutes = 0,
-    int workMinutes = 1,
+    int workMinutes = 0,
     int workSeconds = 0,
     List<Exercise> exercises = const [],
   })  : assert(sets > 0),
@@ -30,11 +30,15 @@ class EMOM extends Bloc {
           exercises: exercises,
         ) {
     cap = Duration(seconds: capSeconds, minutes: capMinutes);
-    work = Duration(seconds: workSeconds, minutes: workMinutes);
+    if (workMinutes == 0 && workSeconds == 0) {
+      work = const Duration(minutes: 1);
+    } else {
+      work = Duration(seconds: workSeconds, minutes: workMinutes);
+    }
   }
 
   factory EMOM.fromJson(Map<String, dynamic> json) {
-    List jsonExercises = json["exercises"];
+    List jsonExercises = json["exercises"] ?? [];
     List<Exercise> exercises = [];
 
     for (var element in jsonExercises) {
@@ -42,13 +46,13 @@ class EMOM extends Bloc {
     }
 
     return EMOM(
-      sets: json["details"]["sets"] ?? 1,
-      restSeconds: json["details"]["rest_duration"]["sec"] ?? 0,
-      restMinutes: json["details"]["rest_duration"]["min"] ?? 0,
-      capMinutes: json["details"]["total_duration"]["min"] ?? 0,
-      capSeconds: json["details"]["total_duration"]["sec"] ?? 0,
-      workMinutes: json["details"]["work_duration"]["min"] ?? 1,
-      workSeconds: json["details"]["work_duration"]["sec"] ?? 1,
+      sets: json["details"]?["sets"] ?? 1,
+      restSeconds: json["details"]?["rest_duration"]?["sec"] ?? 0,
+      restMinutes: json["details"]?["rest_duration"]?["min"] ?? 0,
+      capMinutes: json["details"]?["cap_duration"]?["min"] ?? 0,
+      capSeconds: json["details"]?["cap_duration"]?["sec"] ?? 0,
+      workMinutes: json["details"]?["work_duration"]?["min"] ?? 0,
+      workSeconds: json["details"]?["work_duration"]?["sec"] ?? 0,
       exercises: exercises,
     );
   }
@@ -59,14 +63,15 @@ class EMOM extends Bloc {
 
     // if multiple sets of EMOM, write number
     if (sets != 1) {
-      out.write("$sets Cycles [ ");
+      out.write("$sets Cycles [");
     }
 
     // Exercise type
-    out.write("EMOM ");
+    out.write("EMOM");
 
     // Duration of one set (only if != 1')
     if (work.inSeconds != 60) {
+      out.write(" ");
       out.write(Converter.durationToString(work));
     }
 
@@ -76,7 +81,7 @@ class EMOM extends Bloc {
 
     // if multiple sets of EMOM, write rest duration
     if (sets != 1) {
-      out.write(" ] - ");
+      out.write("] - ");
       out.write(Converter.durationToString(rest));
       out.write(" Repos");
     }

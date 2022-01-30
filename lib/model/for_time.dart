@@ -28,7 +28,7 @@ class ForTime extends Bloc {
   }
 
   factory ForTime.fromJson(Map<String, dynamic> json) {
-    List jsonExercises = json["exercises"];
+    List jsonExercises = json["exercises"] ?? [];
     List<Exercise> exercises = [];
 
     for (var element in jsonExercises) {
@@ -36,11 +36,11 @@ class ForTime extends Bloc {
     }
 
     return ForTime(
-      sets: json["details"]["sets"] ?? 1,
-      restSeconds: json["details"]["set_duration"]["sec"] ?? 0,
-      restMinutes: json["details"]["set_duration"]["min"] ?? 0,
-      capMinutes: json["details"]["time_cap"]["min"] ?? 0,
-      capSeconds: json["details"]["time_cap"]["sec"] ?? 0,
+      sets: json["details"]?["sets"] ?? 1,
+      restSeconds: json["details"]?["rest_duration"]?["sec"] ?? 0,
+      restMinutes: json["details"]?["rest_duration"]?["min"] ?? 0,
+      capMinutes: json["details"]?["cap_duration"]?["min"] ?? 0,
+      capSeconds: json["details"]?["cap_duration"]?["sec"] ?? 0,
       exercises: exercises,
     );
   }
@@ -51,18 +51,22 @@ class ForTime extends Bloc {
 
     // if multiple sets of For Time, write number
     if (sets != 1) {
-      out.write("$sets Cycles [ ");
+      out.write("$sets Cycles [");
     }
 
     // Exercise type
-    out.write("For Time ");
+    out.write("For Time");
 
-    // Time cap of the AMRAP
-    out.write(Converter.durationToString(cap));
+    if (cap != Duration.zero) {
+      out.write(" ");
+
+      // Time cap of the AMRAP
+      out.write(Converter.durationToString(cap));
+    }
 
     // if multiple sets of For Time, write rest duration
     if (sets != 1) {
-      out.write(" ] - ");
+      out.write("] - ");
       out.write(Converter.durationToString(rest));
       out.write(" Repos");
     }

@@ -10,6 +10,10 @@ const String kLoginErrorBodyString =
 const String kNetworkErrorHeaderString = "Erreur réseau";
 const String kNetworkErrorBodyString =
     "La connexion ne peut pas être établie avec le serveur.";
+const String kConnectionErrorHeaderString = "Connexion impossible";
+const String kConnectionErrorBodyString =
+    "Vérifie que tu as accès à Internet avant de rafraichir la page.";
+const String kRefreshButtonString = "Rafraichir";
 
 //AppBar
 const String kAppBarPreviewString = 'Programme de la semaine';
@@ -63,21 +67,21 @@ const TextStyle kLoginHeaderStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const TextStyle kLoginErrorHeaderStyle = TextStyle(
+const TextStyle kErrorHeaderStyle = TextStyle(
   fontFamily: 'OpenSans',
   fontWeight: FontWeight.bold,
   fontSize: 20.0,
 );
 
-const TextStyle kLoginErrorBodyStyle = TextStyle(
+const TextStyle kErrorBodyStyle = TextStyle(
   fontFamily: 'OpenSans',
   fontSize: 16.0,
 );
 
 const AlertStyle kLoginAlertStyle = AlertStyle(
-  titleStyle: kLoginErrorHeaderStyle,
+  titleStyle: kErrorHeaderStyle,
   titleTextAlign: TextAlign.start,
-  descStyle: kLoginErrorBodyStyle,
+  descStyle: kErrorBodyStyle,
   descTextAlign: TextAlign.start,
 );
 
@@ -137,4 +141,9 @@ BoxDecoration kShimmerCardBoxDecoration = BoxDecoration(
   borderRadius: const BorderRadius.all(
     Radius.circular(3.0),
   ),
+);
+
+const TextStyle kTextButtonStyle = TextStyle(
+  color: kPrimaryColor,
+  fontSize: 15.0,
 );

@@ -1,6 +1,7 @@
 import 'package:fitness_app/constants.dart';
 import 'package:fitness_app/model/daily_program.dart';
 import 'package:fitness_app/view/components/card_body.dart';
+import 'package:fitness_app/view/screens/preview_screen.dart';
 import 'package:flutter/material.dart';
 
 class DayCard extends StatefulWidget {
@@ -90,7 +91,11 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
                       : TextButton(
                           style: kProgramButtonTextStyle,
                           onPressed: () {
-                            print("pressed"); //TODO Navigation
+                            Navigator.pushNamed(
+                              context,
+                              PreviewScreen.route,
+                              arguments: [widget.program],
+                            );
                           },
                           child: const Icon(
                             Icons.play_arrow_rounded,
