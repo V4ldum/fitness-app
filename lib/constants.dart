@@ -14,6 +14,9 @@ const String kConnectionErrorHeaderString = "Connexion impossible";
 const String kConnectionErrorBodyString =
     "Vérifie que tu as accès à Internet avant de rafraichir la page.";
 const String kRefreshButtonString = "Rafraichir";
+const String kVideoErrorHeaderString = "Vidéo inaccessible";
+const String kVideoErrorBodyString =
+    "Vérifie ta connexion à Internet. Si le problème persiste, contacte l'administrateur.";
 
 //AppBar
 const String kAppBarPreviewString = 'Programme de la semaine';
@@ -146,4 +149,26 @@ BoxDecoration kShimmerCardBoxDecoration = BoxDecoration(
 const TextStyle kTextButtonStyle = TextStyle(
   color: kPrimaryColor,
   fontSize: 15.0,
+);
+
+const BoxDecoration kPreviewTopGradiant = BoxDecoration(
+  gradient: LinearGradient(
+    colors: [
+      Colors.black26,
+      Colors.transparent,
+    ],
+    begin: Alignment(-1, -1),
+    end: Alignment(-1, -0.75),
+  ),
+);
+
+const BoxDecoration kPreviewBottomGradiant = BoxDecoration(
+  gradient: LinearGradient(
+    colors: [
+      Colors.black26,
+      Colors.transparent,
+    ],
+    begin: Alignment(1, 1),
+    end: Alignment(1, 0.6),
+  ),
 );

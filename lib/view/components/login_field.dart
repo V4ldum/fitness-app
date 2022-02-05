@@ -30,10 +30,12 @@ class _LoginFieldState extends State<LoginField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       onChanged: widget.onChanged,
       obscureText: widget.obscure,
       autocorrect: false,
+      textInputAction:
+          widget.obscure ? TextInputAction.done : TextInputAction.next,
       decoration: kLoginTextFieldStyle.copyWith(
         hintText: widget.hint,
         prefixIcon: Icon(widget.icon, size: 20.0),

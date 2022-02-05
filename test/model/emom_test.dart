@@ -24,6 +24,8 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
 
       expect(e.exercises.length, 0);
+
+      expect(e.videoAsset, "");
     });
     test("set should be 1", () {
       EMOM e = EMOM(sets: 1);
@@ -112,6 +114,11 @@ void main() {
       expect(e.exercises.length, 1);
       expect(e.exercises[0], le[0]);
     });
+    test("videoAsset should be assets/TEST", () {
+      EMOM e = EMOM(videoAsset: "assets/TEST");
+
+      expect(e.videoAsset, "assets/TEST");
+    });
     test("assertion should throw errors (sets)", () {
       expect(() => EMOM(sets: 0), throwsAssertionError);
       expect(() => EMOM(sets: -1), throwsAssertionError);
@@ -141,7 +148,7 @@ void main() {
         "rest should be 0:00, cap should be 0:00, work should be 1:00 (full json)",
         () {
       String jsonString =
-          '{"type": 3,"details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"cap_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 3,"video":"assets/TEST","details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"cap_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
 
       expect(e.sets, 1);
@@ -150,10 +157,11 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
     });
     test("rest should be 0:00 (no rest)", () {
       String jsonString =
-          '{"type": 3,"details": {"sets": 1,"cap_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 3,"video":"assets/TEST","details": {"sets": 1,"cap_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
 
       expect(e.sets, 1);
@@ -162,10 +170,11 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
     });
     test("cap should be 0:00 (no cap)", () {
       String jsonString =
-          '{"type": 3,"details": {"sets": 1,"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 3,"video":"assets/TEST","details": {"sets": 1,"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
 
       expect(e.sets, 1);
@@ -174,10 +183,11 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
     });
     test("work should be 1:00 (no work)", () {
       String jsonString =
-          '{"type": 3,"details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 3,"video":"assets/TEST","details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
 
       expect(e.sets, 1);
@@ -186,10 +196,11 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
     });
     test("sets should be 1 (no set)", () {
       String jsonString =
-          '{"type": 3,"details": {},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 3,"video":"assets/TEST","details": {},"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
 
       expect(e.sets, 1);
@@ -198,10 +209,24 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
     });
     test(
         "sets should be 1, rest should be 0:00, cap should be 0:00, work should be 1:00 (no details)",
         () {
+      String jsonString =
+          '{"type": 3,"video":"assets/TEST","exercises": [{"name": "test","assets": "test"}]}';
+      EMOM e = EMOM.fromJson(json.decode(jsonString));
+
+      expect(e.sets, 1);
+      expect(e.rest, Duration.zero);
+      expect(e.cap, Duration.zero);
+      expect(e.work, const Duration(minutes: 1));
+      expect(e.exercises.length, 1);
+      expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "assets/TEST");
+    });
+    test("videoAsset should be empty", () {
       String jsonString =
           '{"type": 3,"exercises": [{"name": "test","assets": "test"}]}';
       EMOM e = EMOM.fromJson(json.decode(jsonString));
@@ -212,6 +237,7 @@ void main() {
       expect(e.work, const Duration(minutes: 1));
       expect(e.exercises.length, 1);
       expect(e.exercises[0].name, "test");
+      expect(e.videoAsset, "");
     });
     test("rest should be 0:30 (full json)", () {
       String jsonString =

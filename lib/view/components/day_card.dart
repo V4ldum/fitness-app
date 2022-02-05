@@ -91,6 +91,7 @@ class _DayCardState extends State<DayCard> with SingleTickerProviderStateMixin {
                       : TextButton(
                           style: kProgramButtonTextStyle,
                           onPressed: () {
+                            widget.program.startProgram();
                             Navigator.pushNamed(
                               context,
                               PreviewScreen.route,

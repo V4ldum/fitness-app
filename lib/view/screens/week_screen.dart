@@ -17,41 +17,44 @@ class WeekScreen extends StatefulWidget {
 
 class _WeekScreenState extends State<WeekScreen> {
   Widget _errorBuilder(error) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Image(
-          height: 250.0,
-          image: AssetImage("assets/fatigue.png"),
-        ),
-        const SizedBox(height: 15.0),
-        const Text(
-          kConnectionErrorHeaderString,
-          textAlign: TextAlign.center,
-          style: kErrorHeaderStyle,
-        ),
-        const Text(
-          kConnectionErrorBodyString,
-          textAlign: TextAlign.center,
-          style: kErrorBodyStyle,
-        ),
-        const SizedBox(height: 15.0),
-        TextButton.icon(
-          onPressed: () {
-            setState(() {});
-          },
-          icon: const Icon(
-            Icons.refresh,
-            color: kPrimaryColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Image(
+            height: 250.0,
+            image: AssetImage("assets/fatigue.png"),
           ),
-          label: const Text(
-            kRefreshButtonString,
-            style: kTextButtonStyle,
+          const SizedBox(height: 15.0),
+          const Text(
+            kConnectionErrorHeaderString,
+            textAlign: TextAlign.center,
+            style: kErrorHeaderStyle,
           ),
-        ),
-        const SizedBox(height: 50.0),
-      ],
+          const Text(
+            kConnectionErrorBodyString,
+            textAlign: TextAlign.center,
+            style: kErrorBodyStyle,
+          ),
+          const SizedBox(height: 15.0),
+          TextButton.icon(
+            onPressed: () {
+              setState(() {});
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: kPrimaryColor,
+            ),
+            label: const Text(
+              kRefreshButtonString,
+              style: kTextButtonStyle,
+            ),
+          ),
+          const SizedBox(height: 50.0),
+        ],
+      ),
     );
   }
 
@@ -72,7 +75,9 @@ class _WeekScreenState extends State<WeekScreen> {
 
     for (var element in data) {
       DailyProgram tmp = DailyProgram.fromJson(element);
-      listViewChildren.add(DayCard(program: tmp));
+      listViewChildren.add(
+        DayCard(program: tmp),
+      );
     }
 
     return ListView(
@@ -81,7 +86,7 @@ class _WeekScreenState extends State<WeekScreen> {
     );
   }
 
-  Widget _futureBuilderContent(
+  Widget _buildWeeklyProgram(
       BuildContext context, AsyncSnapshot<List> snapshot) {
     if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError == true) {
@@ -103,7 +108,7 @@ class _WeekScreenState extends State<WeekScreen> {
             padding: const EdgeInsets.all(8.0),
             child: FutureBuilder(
               future: ProgramManager.getProgramOfTheWeek(),
-              builder: _futureBuilderContent,
+              builder: _buildWeeklyProgram,
             )),
       ),
     );

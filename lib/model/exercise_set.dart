@@ -9,6 +9,7 @@ class ExerciseSet extends Bloc {
     int restSeconds = 0,
     int restMinutes = 0,
     List<Exercise> exercises = const [],
+    String videoAsset = "",
   })  : assert(sets > 0),
         assert(restSeconds >= 0 && restSeconds < 60),
         assert(restMinutes >= 0 && restMinutes < 60),
@@ -17,6 +18,7 @@ class ExerciseSet extends Bloc {
           restSeconds: restSeconds,
           restMinutes: restMinutes,
           exercises: exercises,
+          videoAsset: videoAsset,
         );
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class ExerciseSet extends Bloc {
       restSeconds: json["details"]?["rest_duration"]?["sec"] ?? 0,
       restMinutes: json["details"]?["rest_duration"]?["min"] ?? 0,
       exercises: exercises,
+      videoAsset: json["video"] ?? "",
     );
   }
 

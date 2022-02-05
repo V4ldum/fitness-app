@@ -11,6 +11,7 @@ class DailyProgram {
   String subtitle;
   List<Bloc> blocs;
   String text;
+  int _currentBloc = 1;
 
   bool get isRestDay {
     return text != "";
@@ -46,5 +47,17 @@ class DailyProgram {
       blocs: blocs,
       text: json["text"] ?? "",
     );
+  }
+
+  void startProgram() {
+    _currentBloc = 1;
+  }
+
+  void nextBloc() {
+    _currentBloc++;
+  }
+
+  Bloc getCurrentBloc() {
+    return blocs[_currentBloc];
   }
 }

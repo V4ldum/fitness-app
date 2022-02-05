@@ -1,3 +1,4 @@
+import 'package:fitness_app/view/components/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class ClockScreen extends StatelessWidget {
@@ -7,6 +8,11 @@ class ClockScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("Clock");
+    return const SafeArea(
+      child: Scaffold(
+        appBar: MyAppBar(title: "Chronomètre"),
+        body: Text("Clock"),
+      ),
+    );
   }
 }

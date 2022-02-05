@@ -13,26 +13,22 @@
             "min": 12
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Power Clean x1",
-            "assets": "TODO"
+            "name": "Power Clean x1"
           },
           {
-            "name": "Clean x1",
-            "assets": "TODO"
+            "name": "Clean x1"
           },
           {
-            "name": "Power Squat Clean x1",
-            "assets": "TODO"
+            "name": "Power Squat Clean x1"
           },
           {
-            "name": "Pause Squat x1",
-            "assets": "TODO"
+            "name": "Pause Squat x1"
           },
           {
-            "name": "High Jump Squat x3",
-            "assets": "TODO"
+            "name": "High Jump Squat x3"
           }
         ]
       },
@@ -46,18 +42,16 @@
             "min": 12
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "*0-2': Squat Clean x8",
-            "assets": "TODO"
+            "name": "*0-2': Squat Clean x8"
           },
           {
-            "name": "*2-4': Fentes x8/côté",
-            "assets": "TODO"
+            "name": "*2-4': Fentes x8/côté"
           },
           {
-            "name": "*4-6': Romanian Deadlift x10 + Jump Squat x10 + Abdos x10",
-            "assets": "TODO"
+            "name": "*4-6': Romanian Deadlift x10 + Jump Squat x10 + Abdos x10"
           }
         ]
       },
@@ -75,30 +69,25 @@
             "sec": 10
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Burpees",
-            "assets": "TODO"
+            "name": "Burpees"
           },
           {
-            "name": "Goblet Squat Clean",
-            "assets": "TODO"
+            "name": "Goblet Squat Clean"
           },
           {
-            "name": "Rack Walk",
-            "assets": "TODO"
+            "name": "Rack Walk"
           },
           {
-            "name": "Swing",
-            "assets": "TODO"
+            "name": "Swing"
           },
           {
-            "name": "Jumping Jack",
-            "assets": "TODO"
+            "name": "Jumping Jack"
           },
           {
-            "name": "Farmer Walk",
-            "assets": "TODO"
+            "name": "Farmer Walk"
           }
         ]
       }
@@ -119,14 +108,13 @@
             "min": 1
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "OverHead Press x5/côté",
-            "assets": "TODO"
+            "name": "OverHead Press x5/côté"
           },
           {
-            "name": "Rowing Sumo x5/côté",
-            "assets": "TODO"
+            "name": "Rowing Sumo x5/côté"
           }
         ]
       },
@@ -137,18 +125,16 @@
             "min": 15
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Tractions x50",
-            "assets": "TODO"
+            "name": "Tractions x50"
           },
           {
-            "name": "Pompes Inclinées Lestées x50",
-            "assets": "TODO"
+            "name": "Pompes Inclinées Lestées x50"
           },
           {
-            "name": "American Swing x50",
-            "assets": "TODO"
+            "name": "American Swing x50"
           }
         ]
       }
@@ -171,14 +157,13 @@
             "min": 2
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Squat x6",
-            "assets": "TODO"
+            "name": "Squat x6"
           },
           {
-            "name": "Deadlift x6",
-            "assets": "TODO"
+            "name": "Deadlift x6"
           }
         ]
       },
@@ -193,14 +178,13 @@
             "min": 1
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Romanian Deadlift x10",
-            "assets": "TODO"
+            "name": "Romanian Deadlift x10"
           },
           {
-            "name": "Toes to Bar x10",
-            "assets": "TODO"
+            "name": "Toes to Bar x10"
           }
         ]
       },
@@ -215,18 +199,16 @@
             "sec": 30
           }
         },
+        "video": "assets/video_template.mp4",
         "exercises": [
           {
-            "name": "Jump Squat x5",
-            "assets": "TODO"
+            "name": "Jump Squat x5"
           },
           {
-            "name": "Jumping Jack x15",
-            "assets": "TODO"
+            "name": "Jumping Jack x15"
           },
           {
-            "name": "Mountain Climber x30",
-            "assets": "TODO"
+            "name": "Mountain Climber x30"
           }
         ]
       }
@@ -250,15 +232,15 @@
         "exercises": [
           {
             "name": "OverHead Press x6",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Tractions Lestées x6",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Toes to Bar x6",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           }
         ]
       },
@@ -276,15 +258,15 @@
         "exercises": [
           {
             "name": "Floor Press x8",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Rowing Sumo x8",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Knee Raises x8",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           }
         ]
       },
@@ -293,27 +275,27 @@
         "exercises": [
           {
             "name": "Oiseau x30",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Upright Row x30",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Burpees x30",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Swing",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Jumping Jack",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           },
           {
             "name": "Farmer Walk",
-            "assets": "TODO"
+            "assets": "assets/video_template.mp4"
           }
         ]
       }

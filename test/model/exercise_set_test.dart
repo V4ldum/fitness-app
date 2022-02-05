@@ -16,6 +16,8 @@ void main() {
       expect(es.rest, Duration.zero);
 
       expect(es.exercises.length, 0);
+
+      expect(es.videoAsset, "");
     });
     test("set should be 1", () {
       ExerciseSet es = ExerciseSet(sets: 1);
@@ -54,6 +56,11 @@ void main() {
       expect(es.exercises.length, 1);
       expect(es.exercises[0], le[0]);
     });
+    test("videoAsset should be assets/TEST", () {
+      ExerciseSet es = ExerciseSet(videoAsset: "assets/TEST");
+
+      expect(es.videoAsset, "assets/TEST");
+    });
     test("assertion should throw errors (sets)", () {
       expect(() => ExerciseSet(sets: 0), throwsAssertionError);
       expect(() => ExerciseSet(sets: -1), throwsAssertionError);
@@ -69,35 +76,49 @@ void main() {
   group("Exercise Set JSON", () {
     test("rest should be 0:00 (full json)", () {
       String jsonString =
-          '{"type": 0,"details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 0,"video":"assets/TEST","details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       ExerciseSet es = ExerciseSet.fromJson(json.decode(jsonString));
 
       expect(es.sets, 1);
       expect(es.rest, Duration.zero);
       expect(es.exercises.length, 1);
       expect(es.exercises[0].name, "test");
+      expect(es.videoAsset, "assets/TEST");
     });
     test("rest should be 0:00 (no rest)", () {
       String jsonString =
-          '{"type": 0,"details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 0,"video":"assets/TEST","details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
       ExerciseSet es = ExerciseSet.fromJson(json.decode(jsonString));
 
       expect(es.sets, 1);
       expect(es.rest, Duration.zero);
       expect(es.exercises.length, 1);
       expect(es.exercises[0].name, "test");
+      expect(es.videoAsset, "assets/TEST");
     });
     test("sets should be 1 (no set)", () {
       String jsonString =
-          '{"type": 0,"details": {},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 0,"video":"assets/TEST","details": {},"exercises": [{"name": "test","assets": "test"}]}';
       ExerciseSet es = ExerciseSet.fromJson(json.decode(jsonString));
 
       expect(es.sets, 1);
       expect(es.rest, Duration.zero);
       expect(es.exercises.length, 1);
       expect(es.exercises[0].name, "test");
+      expect(es.videoAsset, "assets/TEST");
     });
     test("sets should be 1, rest should be 0:00 (no details)", () {
+      String jsonString =
+          '{"type": 0,"video":"assets/TEST","exercises": [{"name": "test","assets": "test"}]}';
+      ExerciseSet es = ExerciseSet.fromJson(json.decode(jsonString));
+
+      expect(es.sets, 1);
+      expect(es.rest, Duration.zero);
+      expect(es.exercises.length, 1);
+      expect(es.exercises[0].name, "test");
+      expect(es.videoAsset, "assets/TEST");
+    });
+    test("assetVideo should be empty", () {
       String jsonString =
           '{"type": 0,"exercises": [{"name": "test","assets": "test"}]}';
       ExerciseSet es = ExerciseSet.fromJson(json.decode(jsonString));
@@ -106,6 +127,7 @@ void main() {
       expect(es.rest, Duration.zero);
       expect(es.exercises.length, 1);
       expect(es.exercises[0].name, "test");
+      expect(es.videoAsset, "");
     });
     test("rest should be 0:30 (full json)", () {
       String jsonString =

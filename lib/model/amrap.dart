@@ -13,6 +13,7 @@ class AMRAP extends Bloc {
     int restSeconds = 0,
     int restMinutes = 0,
     List<Exercise> exercises = const [],
+    String videoAsset = "",
   })  : assert(sets > 0),
         assert(capMinutes >= 0 && capMinutes < 60),
         assert(capSeconds >= 0 && capSeconds < 60),
@@ -23,6 +24,7 @@ class AMRAP extends Bloc {
           restSeconds: restSeconds,
           restMinutes: restMinutes,
           exercises: exercises,
+          videoAsset: videoAsset,
         ) {
     cap = Duration(seconds: capSeconds, minutes: capMinutes);
   }
@@ -42,6 +44,7 @@ class AMRAP extends Bloc {
       capMinutes: json["details"]?["cap_duration"]?["min"] ?? 0,
       capSeconds: json["details"]?["cap_duration"]?["sec"] ?? 0,
       exercises: exercises,
+      videoAsset: json["video"] ?? "",
     );
   }
 

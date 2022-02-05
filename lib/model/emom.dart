@@ -16,6 +16,7 @@ class EMOM extends Bloc {
     int workMinutes = 0,
     int workSeconds = 0,
     List<Exercise> exercises = const [],
+    String videoAsset = "",
   })  : assert(sets > 0),
         assert(capMinutes >= 0 && capMinutes < 60),
         assert(capSeconds >= 0 && capSeconds < 60),
@@ -28,6 +29,7 @@ class EMOM extends Bloc {
           restSeconds: restSeconds,
           restMinutes: restMinutes,
           exercises: exercises,
+          videoAsset: videoAsset,
         ) {
     cap = Duration(seconds: capSeconds, minutes: capMinutes);
     if (workMinutes == 0 && workSeconds == 0) {
@@ -54,6 +56,7 @@ class EMOM extends Bloc {
       workMinutes: json["details"]?["work_duration"]?["min"] ?? 0,
       workSeconds: json["details"]?["work_duration"]?["sec"] ?? 0,
       exercises: exercises,
+      videoAsset: json["video"] ?? "",
     );
   }
 

@@ -65,6 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MediaQuery.of(context).viewInsets.bottom == 0
+                  ? MainAxisAlignment.center
+                  : MainAxisAlignment.start,
               children: [
                 Visibility(
                   visible: MediaQuery.of(context).viewInsets.bottom == 0,

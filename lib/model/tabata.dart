@@ -16,6 +16,7 @@ class Tabata extends Bloc {
     int pauseMinutes = 0,
     int pauseSeconds = 0,
     List<Exercise> exercises = const [],
+    String videoAsset = "",
   })  : assert(sets > 0),
         assert(workMinutes >= 0 && workMinutes < 60),
         assert(workSeconds >= 0 && workSeconds < 60),
@@ -28,6 +29,7 @@ class Tabata extends Bloc {
           restSeconds: restSeconds,
           restMinutes: restMinutes,
           exercises: exercises,
+          videoAsset: videoAsset,
         ) {
     work = Duration(seconds: workSeconds, minutes: workMinutes);
     pause = Duration(seconds: pauseSeconds, minutes: pauseMinutes);
@@ -50,6 +52,7 @@ class Tabata extends Bloc {
       pauseMinutes: json["details"]?["pause_duration"]?["min"] ?? 0,
       pauseSeconds: json["details"]?["pause_duration"]?["sec"] ?? 0,
       exercises: exercises,
+      videoAsset: json["video"] ?? "",
     );
   }
 
@@ -66,9 +69,9 @@ class Tabata extends Bloc {
 
     // Tabata information (work, rest)
     out.write(Converter.durationToString(work));
-    out.write(" Work - ");
+    out.write(" Effort - ");
     out.write(Converter.durationToString(rest));
-    out.write(" Rest]");
+    out.write(" Repos]");
 
     if (pause != Duration.zero) {
       out.write(" - ");

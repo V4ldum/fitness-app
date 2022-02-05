@@ -20,6 +20,8 @@ void main() {
       expect(ft.cap, Duration.zero);
 
       expect(ft.exercises.length, 0);
+
+      expect(ft.videoAsset, "");
     });
     test("set should be 1", () {
       ForTime ft = ForTime(sets: 1);
@@ -83,6 +85,11 @@ void main() {
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0], le[0]);
     });
+    test("videoAsset should be assets/TEST", () {
+      ForTime ft = ForTime(videoAsset: "assets/TEST");
+
+      expect(ft.videoAsset, "assets/TEST");
+    });
     test("assertion should throw errors (sets)", () {
       expect(() => ForTime(sets: 0), throwsAssertionError);
       expect(() => ForTime(sets: -1), throwsAssertionError);
@@ -104,7 +111,7 @@ void main() {
   group("For Time JSON", () {
     test("rest should be 0:00, cap should be 0:00 (full json)", () {
       String jsonString =
-          '{"type": 2,"details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"cap_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 2,"video":"assets/TEST","details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"cap_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       ForTime ft = ForTime.fromJson(json.decode(jsonString));
 
       expect(ft.sets, 1);
@@ -112,10 +119,11 @@ void main() {
       expect(ft.cap, Duration.zero);
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "assets/TEST");
     });
     test("rest should be 0:00 (no rest)", () {
       String jsonString =
-          '{"type": 2,"details": {"sets": 1,"cap_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 2,"video":"assets/TEST","details": {"sets": 1,"cap_duration": {"min": 0,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       ForTime ft = ForTime.fromJson(json.decode(jsonString));
 
       expect(ft.sets, 1);
@@ -123,10 +131,11 @@ void main() {
       expect(ft.cap, Duration.zero);
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "assets/TEST");
     });
     test("cap should be 0:00 (no cap)", () {
       String jsonString =
-          '{"type": 2,"details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 2,"video":"assets/TEST","details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
       ForTime ft = ForTime.fromJson(json.decode(jsonString));
 
       expect(ft.sets, 1);
@@ -134,10 +143,11 @@ void main() {
       expect(ft.cap, Duration.zero);
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "assets/TEST");
     });
     test("sets should be 1 (no set)", () {
       String jsonString =
-          '{"type": 2,"details": {},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 2,"video":"assets/TEST","details": {},"exercises": [{"name": "test","assets": "test"}]}';
       ForTime ft = ForTime.fromJson(json.decode(jsonString));
 
       expect(ft.sets, 1);
@@ -145,10 +155,23 @@ void main() {
       expect(ft.cap, Duration.zero);
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "assets/TEST");
     });
     test(
         "sets should be 1, rest should be 0:00, cap should be 0:00 (no details)",
         () {
+      String jsonString =
+          '{"type": 2,"video":"assets/TEST","exercises": [{"name": "test","assets": "test"}]}';
+      ForTime ft = ForTime.fromJson(json.decode(jsonString));
+
+      expect(ft.sets, 1);
+      expect(ft.rest, Duration.zero);
+      expect(ft.cap, Duration.zero);
+      expect(ft.exercises.length, 1);
+      expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "assets/TEST");
+    });
+    test("videoAsset should be empty", () {
       String jsonString =
           '{"type": 2,"exercises": [{"name": "test","assets": "test"}]}';
       ForTime ft = ForTime.fromJson(json.decode(jsonString));
@@ -158,6 +181,7 @@ void main() {
       expect(ft.cap, Duration.zero);
       expect(ft.exercises.length, 1);
       expect(ft.exercises[0].name, "test");
+      expect(ft.videoAsset, "");
     });
     test("rest should be 0:30 (full json)", () {
       String jsonString =

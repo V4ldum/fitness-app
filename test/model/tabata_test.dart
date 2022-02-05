@@ -24,6 +24,8 @@ void main() {
       expect(t.pause, Duration.zero);
 
       expect(t.exercises.length, 0);
+
+      expect(t.videoAsset, "");
     });
     test("set should be 1", () {
       Tabata t = Tabata(sets: 1);
@@ -112,6 +114,11 @@ void main() {
       expect(t.exercises.length, 1);
       expect(t.exercises[0], le[0]);
     });
+    test("videoAsset should be assets/TEST", () {
+      Tabata t = Tabata(videoAsset: "assets/TEST");
+
+      expect(t.videoAsset, "assets/TEST");
+    });
     test("assertion should throw errors (sets)", () {
       expect(() => Tabata(sets: 0), throwsAssertionError);
       expect(() => Tabata(sets: -1), throwsAssertionError);
@@ -141,7 +148,7 @@ void main() {
         "rest should be 0:00, pause should be 0:00, work should be 1:00 (full json)",
         () {
       String jsonString =
-          '{"type": 4,"details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"pause_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 4,"video":"assets/TEST","details": {"sets": 1,"rest_duration": {"min": 0,"sec": 0},"pause_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
 
       expect(t.sets, 1);
@@ -150,10 +157,11 @@ void main() {
       expect(t.work, const Duration(minutes: 1));
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
     });
     test("rest should be 0:00 (no rest)", () {
       String jsonString =
-          '{"type": 4,"details": {"sets": 1,"pause_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 4,"video":"assets/TEST","details": {"sets": 1,"pause_duration": {"min": 0,"sec": 0},"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
 
       expect(t.sets, 1);
@@ -162,10 +170,11 @@ void main() {
       expect(t.work, const Duration(minutes: 1));
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
     });
     test("pause should be 0:00 (no pause)", () {
       String jsonString =
-          '{"type": 4,"details": {"sets": 1,"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 4,"video":"assets/TEST","details": {"sets": 1,"work_duration": {"min": 1,"sec": 0}},"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
 
       expect(t.sets, 1);
@@ -174,10 +183,11 @@ void main() {
       expect(t.work, const Duration(minutes: 1));
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
     });
     test("work should be 1:00 (no work)", () {
       String jsonString =
-          '{"type": 4,"details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 4,"video":"assets/TEST","details": {"sets": 1},"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
 
       expect(t.sets, 1);
@@ -186,10 +196,11 @@ void main() {
       expect(t.work, Duration.zero);
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
     });
     test("sets should be 1 (no set)", () {
       String jsonString =
-          '{"type": 4,"details": {},"exercises": [{"name": "test","assets": "test"}]}';
+          '{"type": 4,"video":"assets/TEST","details": {},"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
 
       expect(t.sets, 1);
@@ -198,10 +209,24 @@ void main() {
       expect(t.work, Duration.zero);
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
     });
     test(
         "sets should be 1, rest should be 0:00, pause should be 0:00, work should be 1:00 (no details)",
         () {
+      String jsonString =
+          '{"type": 4,"video":"assets/TEST","exercises": [{"name": "test","assets": "test"}]}';
+      Tabata t = Tabata.fromJson(json.decode(jsonString));
+
+      expect(t.sets, 1);
+      expect(t.rest, Duration.zero);
+      expect(t.pause, Duration.zero);
+      expect(t.work, Duration.zero);
+      expect(t.exercises.length, 1);
+      expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "assets/TEST");
+    });
+    test("videoAsset should be empty", () {
       String jsonString =
           '{"type": 4,"exercises": [{"name": "test","assets": "test"}]}';
       Tabata t = Tabata.fromJson(json.decode(jsonString));
@@ -212,6 +237,7 @@ void main() {
       expect(t.work, Duration.zero);
       expect(t.exercises.length, 1);
       expect(t.exercises[0].name, "test");
+      expect(t.videoAsset, "");
     });
     test("rest should be 0:30 (full json)", () {
       String jsonString =
@@ -514,25 +540,25 @@ void main() {
   });
 
   group("Tabata ToString", () {
-    test("should be \"1 Cycle [1'30\" Work - 30\" Rest]\"", () {
+    test("should be \"1 Cycle [1'30\" Effort - 30\" Repos]\"", () {
       Tabata t = Tabata(
         workMinutes: 1,
         workSeconds: 30,
         restSeconds: 30,
       );
 
-      expect(t.toString(), "1 Cycle [1'30\" Work - 30\" Rest]");
+      expect(t.toString(), "1 Cycle [1'30\" Effort - 30\" Repos]");
     });
-    test("should be \"1 Cycle [1'30\" Work - 1' Rest]\"", () {
+    test("should be \"1 Cycle [1'30\" Effort - 1' Repos]\"", () {
       Tabata t = Tabata(
         workMinutes: 1,
         workSeconds: 30,
         restMinutes: 1,
       );
 
-      expect(t.toString(), "1 Cycle [1'30\" Work - 1' Rest]");
+      expect(t.toString(), "1 Cycle [1'30\" Effort - 1' Repos]");
     });
-    test("should be \"1 Cycle [1'30\" Work - 1'30\" Rest]\"", () {
+    test("should be \"1 Cycle [1'30\" Effort - 1'30\" Repos]\"", () {
       Tabata t = Tabata(
         workMinutes: 1,
         workSeconds: 30,
@@ -540,27 +566,28 @@ void main() {
         restSeconds: 30,
       );
 
-      expect(t.toString(), "1 Cycle [1'30\" Work - 1'30\" Rest]");
+      expect(t.toString(), "1 Cycle [1'30\" Effort - 1'30\" Repos]");
     });
-    test("should be \"1 Cycle [1' Work - 1'30\" Rest]\"", () {
+    test("should be \"1 Cycle [1' Effort - 1'30\" Repos]\"", () {
       Tabata t = Tabata(
         workMinutes: 1,
         restMinutes: 1,
         restSeconds: 30,
       );
 
-      expect(t.toString(), "1 Cycle [1' Work - 1'30\" Rest]");
+      expect(t.toString(), "1 Cycle [1' Effort - 1'30\" Repos]");
     });
-    test("should be \"1 Cycle [30\" Work - 1'30\" Rest]\"", () {
+    test("should be \"1 Cycle [30\" Effort - 1'30\" Repos]\"", () {
       Tabata t = Tabata(
         workSeconds: 30,
         restMinutes: 1,
         restSeconds: 30,
       );
 
-      expect(t.toString(), "1 Cycle [30\" Work - 1'30\" Rest]");
+      expect(t.toString(), "1 Cycle [30\" Effort - 1'30\" Repos]");
     });
-    test("should be \"2 Cycles [1'30\" Work - 1'30\" Rest] - 30\" Pause\"", () {
+    test("should be \"2 Cycles [1'30\" Effort - 1'30\" Repos] - 30\" Pause\"",
+        () {
       Tabata t = Tabata(
         sets: 2,
         workMinutes: 1,
@@ -570,9 +597,11 @@ void main() {
         pauseSeconds: 30,
       );
 
-      expect(t.toString(), "2 Cycles [1'30\" Work - 1'30\" Rest] - 30\" Pause");
+      expect(
+          t.toString(), "2 Cycles [1'30\" Effort - 1'30\" Repos] - 30\" Pause");
     });
-    test("should be \"2 Cycles [1'30\" Work - 1'30\" Rest] - 1' Pause\"", () {
+    test("should be \"2 Cycles [1'30\" Effort - 1'30\" Repos] - 1' Pause\"",
+        () {
       Tabata t = Tabata(
         sets: 2,
         workMinutes: 1,
@@ -582,9 +611,10 @@ void main() {
         pauseMinutes: 1,
       );
 
-      expect(t.toString(), "2 Cycles [1'30\" Work - 1'30\" Rest] - 1' Pause");
+      expect(
+          t.toString(), "2 Cycles [1'30\" Effort - 1'30\" Repos] - 1' Pause");
     });
-    test("should be \"2 Cycles [1'30\" Work - 1'30\" Rest] - 1'30\" Pause\"",
+    test("should be \"2 Cycles [1'30\" Effort - 1'30\" Repos] - 1'30\" Pause\"",
         () {
       Tabata t = Tabata(
         sets: 2,
@@ -596,8 +626,8 @@ void main() {
         pauseSeconds: 30,
       );
 
-      expect(
-          t.toString(), "2 Cycles [1'30\" Work - 1'30\" Rest] - 1'30\" Pause");
+      expect(t.toString(),
+          "2 Cycles [1'30\" Effort - 1'30\" Repos] - 1'30\" Pause");
     });
   });
 }
