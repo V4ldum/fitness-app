@@ -1,4 +1,0 @@
-enum ErrorType {
-  password,
-  network,
-}

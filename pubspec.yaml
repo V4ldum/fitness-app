@@ -10,16 +10,21 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
   url_launcher: ^6.0.17
   rflutter_alert: ^2.0.4
   modal_progress_hud_nsn: ^0.1.0-nullsafety-1
   shimmer: ^2.0.0
   video_player: ^2.2.18
+  provider: ^6.0.2
+  shared_preferences: ^2.0.13
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
+  mocktail: ^0.3.0
 
 flutter:
   uses-material-design: true
@@ -29,9 +34,24 @@ flutter:
     - family: Abel
       fonts:
         - asset: assets/fonts/Abel-Regular.ttf
-    - family: OpenSans
+    - family: OpenSans-Light
+      fonts:
+        - asset: assets/fonts/OpenSans-Light.ttf
+    - family: OpenSans-Regular
       fonts:
         - asset: assets/fonts/OpenSans-Regular.ttf
+    - family: OpenSans-Medium
+      fonts:
+        - asset: assets/fonts/OpenSans-Medium.ttf
+    - family: OpenSans-SemiBold
+      fonts:
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+    - family: OpenSans-Bold
+      fonts:
+        - asset: assets/fonts/OpenSans-Bold.ttf
+    - family: OpenSans-ExtraBold
+      fonts:
+        - asset: assets/fonts/OpenSans-ExtraBold.ttf
 
 
 

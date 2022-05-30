@@ -1,10 +1,7 @@
-import 'package:fitness_app/constants.dart';
-import 'package:fitness_app/model/daily_program.dart';
-import 'package:fitness_app/view/screens/clock_screen.dart';
-import 'package:fitness_app/view/screens/login_screen.dart';
-import 'package:fitness_app/view/screens/preview_screen.dart';
-import 'package:fitness_app/view/screens/week_screen.dart';
+import 'package:fitness_app/config/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'config/routing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,21 +14,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: kPrimaryDarkColor,
+        scaffoldBackgroundColor: Palette.primary,
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: kPrimaryColor,
+          primary: Palette.accent,
           brightness: Brightness.dark,
         ),
       ),
-      routes: {
-        ClockScreen.route: (context) => const ClockScreen(),
-        LoginScreen.route: (context) => const LoginScreen(),
-        WeekScreen.route: (context) => const WeekScreen(),
-        PreviewScreen.route: (context) => PreviewScreen(
-            program: (ModalRoute.of(context)?.settings.arguments!
-                as List<DailyProgram>)[0]),
-      },
-      initialRoute: LoginScreen.route,
+      routes: Routing.routes,
+      initialRoute: Routing.initialRoute,
     );
   }
 }
