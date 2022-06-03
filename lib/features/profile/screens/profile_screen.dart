@@ -4,9 +4,7 @@ import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:fitness_app/shared/widgets/app_bar/app_bar.dart';
 import 'package:fitness_app/shared/widgets/separator.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../settings/providers/settings.dart';
 import '../widgets/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -68,19 +66,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
-            children: [
-              const ProfileHeader(),
-              const SizedBox(height: 15.0),
-              const Separator(),
-              const SizedBox(height: 10.0),
-              ChangeNotifierProvider<Settings>(
-                create: (_) => Settings(),
-                //child: const NotificationsSettings(),
-              ),
+            children: const [
+              ProfileHeader(),
+              SizedBox(height: 15.0),
+              Separator(),
+              SizedBox(height: 10.0),
+              Settings(),
+              SizedBox(height: 20.0),
             ],
           ),
         ),

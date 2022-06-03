@@ -41,4 +41,11 @@ class Strings {
       "Êtes-vous sûr de vouloir vous déconnecter ?";
   static const String logOutAccept = "Se déconnecter";
   static const String logOutDeny = "Annuler";
+  static const String parametersTitle = "Paramètres";
+  static const String myAccountButton = "Mon Compte";
+  static const String notificationsSettings = "Notifications";
+  static const String notificationOption1 = "Toutes";
+  static const String notificationOption2 = "Programme";
+  static const String notificationOption3 = "Aucune";
+  static const String deviceSettingsButton = "Paramètres de l'appareil";
 }

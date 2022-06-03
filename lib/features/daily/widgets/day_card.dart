@@ -1,5 +1,5 @@
 import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/features/social/screens/comments_screen.dart';
+import 'package:fitness_app/features/comments/screens/comments_screen.dart';
 import 'package:fitness_app/features/video_player/screens/preview_screen.dart';
 import 'package:fitness_app/shared/widgets/separator.dart';
 import 'package:flutter/material.dart';

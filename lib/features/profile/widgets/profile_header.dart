@@ -15,7 +15,7 @@ class ProfileHeader extends StatelessWidget {
       children: const [
         BigAvatar(image: 'assets/strong_cat.png'),
         SizedBox(height: 15.0),
-        ProfileName(name: "Chris Bum"),
+        ProfileName(name: "Cat Bumstead"),
       ],
     );
   }

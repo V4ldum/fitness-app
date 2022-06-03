@@ -1,5 +1,5 @@
 import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/features/social/screens/profile_screen.dart';
+import 'package:fitness_app/features/profile/screens/profile_screen.dart';
 import 'package:fitness_app/shared/widgets/app_bar/app_bar.dart';
 import 'package:fitness_app/shared/widgets/error_page/error_page.dart';
 import 'package:fitness_app/shared/widgets/small_logo.dart';

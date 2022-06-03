@@ -11,6 +11,18 @@ class PreviewVideoPlayer extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  void playpause(VideoPlayerProvider vpp) {
+    if (vpp.isDonePlaying) {
+      vpp.replay();
+    } else {
+      if (vpp.isPlaying) {
+        vpp.pause();
+      } else {
+        vpp.play();
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -40,31 +52,74 @@ class PreviewVideoPlayer extends StatelessWidget {
             ),
           ),
         ),
-        const Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 10.0),
-            child: VideoPlayerHub(),
-          ),
-        ),
-        Visibility(
-          visible: context.watch<VideoPlayerProvider>().isDonePlaying,
-          child: Align(
-            alignment: Alignment.center,
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: RadialGradient(
-                  colors: [
-                    Colors.black12,
-                    Colors.transparent,
-                  ],
-                  radius: 0.5,
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.height - 130,
+                  child: GestureDetector(
+                    onTap: () {
+                      playpause(context.read<VideoPlayerProvider>());
+                    },
+                    onDoubleTap: context.read<VideoPlayerProvider>().backward10,
+                  ),
                 ),
-              ),
-              child: VideoPlayerReplayButton(
-                  onPressed: context.read<VideoPlayerProvider>().replay),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height - 130,
+                      child: GestureDetector(
+                        onTap: () {
+                          playpause(context.read<VideoPlayerProvider>());
+                        },
+                      ),
+                    ),
+                    Visibility(
+                      visible:
+                          context.watch<VideoPlayerProvider>().isDonePlaying,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          gradient: RadialGradient(
+                            colors: [
+                              Colors.black26,
+                              Colors.transparent,
+                            ],
+                            radius: 0.55,
+                          ),
+                        ),
+                        child: VideoPlayerReplayButton(
+                            onPressed:
+                                context.read<VideoPlayerProvider>().replay),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.height - 130,
+                  child: GestureDetector(
+                    onTap: () {
+                      playpause(context.read<VideoPlayerProvider>());
+                    },
+                    onDoubleTap: context.read<VideoPlayerProvider>().forward10,
+                  ),
+                ),
+              ],
             ),
-          ),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10.0),
+                child: VideoPlayerHub(),
+              ),
+            ),
+          ],
         ),
       ],
     );

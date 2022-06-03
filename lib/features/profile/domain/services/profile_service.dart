@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/social/domain/models/profile.dart';
+import 'package:fitness_app/features/profile/domain/models/profile.dart';
 import 'package:fitness_app/shared/helpers/network.dart';
 
 import '../repository/profile_repository.dart';
