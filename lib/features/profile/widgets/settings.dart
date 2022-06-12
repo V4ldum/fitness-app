@@ -1,7 +1,12 @@
-import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/features/profile/widgets/option_selector.dart';
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:fitness_app/config/index.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../domain/domain.dart';
+import '../providers/profile_provider.dart';
 import 'widgets.dart';
 
 class Settings extends StatelessWidget {
@@ -24,31 +29,43 @@ class Settings extends StatelessWidget {
           leading: Icons.account_box,
           text: Strings.myAccountButton,
           trailing: Icons.outbond_outlined,
-          onTap: () {
-            print("Navigation"); //TODO fonction
+          onTap: () async {
+            await context.read<ProfileProvider>().openMyAccountPage();
           },
         ),
         const SizedBox(height: 15.0),
-        const ProfileCard(
-          child: OptionSelector(
-            label: Strings.notificationsSettings,
-            options: [
-              Strings.notificationOption1,
-              Strings.notificationOption2,
-              Strings.notificationOption3,
-            ],
+        ProfileCard(
+          child: Consumer<ProfileProvider>(
+            builder: (_, provider, __) {
+              return OptionSelector<Notifications>(
+                label: Strings.notificationsSettings,
+                options: const [
+                  Notifications.Toutes,
+                  Notifications.Programmes,
+                  Notifications.Aucune,
+                ],
+                selectedItem: provider.notificationSelectedItem,
+                onOptionChanged: (Notifications value) {
+                  provider.notificationSelectedItem = value.index;
+                  provider.saveSetting(
+                    Strings.notificationSettingKey,
+                    value.name,
+                  );
+                },
+              );
+            },
           ),
         ),
         const SizedBox(height: 15.0),
-        //TODO check iOS
-        SettingsButton(
-          leading: Icons.app_settings_alt_rounded,
-          text: Strings.deviceSettingsButton,
-          trailing: Icons.outbond_outlined,
-          onTap: () {
-            print("Navigation"); //TODO fonction
-          },
-        )
+        if (Platform.isAndroid)
+          SettingsButton(
+            leading: Icons.app_settings_alt_rounded,
+            text: Strings.deviceSettingsButton,
+            trailing: Icons.outbond_outlined,
+            onTap: () {
+              context.read<ProfileProvider>().openAppSettings();
+            },
+          )
       ],
     );
   }

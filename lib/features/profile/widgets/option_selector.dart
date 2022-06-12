@@ -2,40 +2,33 @@ import 'package:fitness_app/config/index.dart';
 import 'package:fitness_app/features/profile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class OptionSelector extends StatefulWidget {
+class OptionSelector<T> extends StatelessWidget {
   final String label;
-  final List<String> options;
+  final List<T> options;
+  final int selectedItem;
+  final void Function(T)? onOptionChanged;
 
   const OptionSelector({
     Key? key,
     required this.label,
     required this.options,
-  }) : super(key: key);
+    this.selectedItem = 0,
+    this.onOptionChanged,
+  })  : assert(selectedItem < options.length),
+        super(key: key);
 
-  @override
-  State<OptionSelector> createState() => _OptionSelectorState();
-}
-
-class _OptionSelectorState extends State<OptionSelector> {
-  int selectedItem = 1;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  List<Widget> buildOptions() {
+  List<Widget> buildOptions(BuildContext context) {
     List<Widget> out = [];
 
-    for (int i = 0; i < widget.options.length; i++) {
+    for (int i = 0; i < options.length; i++) {
       out.add(
         OptionSelectorTile(
-          label: widget.options[i],
+          label: options[i],
           enabled: selectedItem == i ? true : false,
           onTap: () {
-            setState(() {
-              selectedItem = i;
-            });
+            if (onOptionChanged != null && selectedItem != i) {
+              onOptionChanged!(options[i]);
+            }
           },
         ),
       );
@@ -50,7 +43,7 @@ class _OptionSelectorState extends State<OptionSelector> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          widget.label,
+          label,
           style: const TextStyle(
             fontFamily: Fonts.primarySemiBold,
             fontSize: 16.0,
@@ -61,7 +54,7 @@ class _OptionSelectorState extends State<OptionSelector> {
           padding: const EdgeInsets.only(left: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: buildOptions(),
+            children: buildOptions(context),
           ),
         )
       ],

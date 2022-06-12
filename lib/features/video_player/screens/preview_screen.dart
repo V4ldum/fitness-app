@@ -18,6 +18,7 @@ class PreviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.black,
         extendBodyBehindAppBar: true,
         appBar: MyAppBar(
           title: Strings.appBarPreview,

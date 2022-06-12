@@ -44,8 +44,18 @@ class Strings {
   static const String parametersTitle = "Paramètres";
   static const String myAccountButton = "Mon Compte";
   static const String notificationsSettings = "Notifications";
-  static const String notificationOption1 = "Toutes";
-  static const String notificationOption2 = "Programme";
-  static const String notificationOption3 = "Aucune";
   static const String deviceSettingsButton = "Paramètres de l'appareil";
+  static const String myAccountHost = "i.imgflip.com";
+  static const String myAccountPath = "2mskjg.jpg";
+
+  //Shared Preferences
+  static const String notificationSettingKey = "notifications";
+  //API
+  static const String apiHost = "localhost:8000";
+  static const String apiAuthPath = "/user/auth";
+  static const String apiAccessPath = "/user/access";
+  static const String apiRefreshPath = "/user/refesh";
+  static const String apiPicturePath = "/user/picture";
+  static const String apiDailyPath = "/daily";
+  static const String apiDailyAssetsPath = "/daily/asset";
 }

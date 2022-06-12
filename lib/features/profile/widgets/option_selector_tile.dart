@@ -1,8 +1,9 @@
 import 'package:fitness_app/config/index.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class OptionSelectorTile extends StatelessWidget {
-  final String label;
+class OptionSelectorTile<T> extends StatelessWidget {
+  final T label;
   final bool enabled;
   final Function()? onTap;
 
@@ -11,7 +12,8 @@ class OptionSelectorTile extends StatelessWidget {
     required this.label,
     required this.enabled,
     this.onTap,
-  }) : super(key: key);
+  })  : assert(label is Enum),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class OptionSelectorTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            label,
+            describeEnum(label!),
             style: const TextStyle(
               fontFamily: Fonts.primaryRegular,
               fontSize: 15.0,
