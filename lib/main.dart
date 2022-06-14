@@ -1,5 +1,7 @@
 import 'package:fitness_app/config/colors.dart';
+import 'package:fitness_app/features/app_wide/providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'config/routing.dart';
 
@@ -12,16 +14,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Palette.primary,
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Palette.accent,
-          brightness: Brightness.dark,
+    return ChangeNotifierProvider<AppWideProvider>(
+      create: (_) => AppWideProvider(),
+      child: MaterialApp(
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Palette.primary,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: Palette.accent,
+            brightness: Brightness.dark,
+          ),
         ),
+        routes: Routing.routes,
+        initialRoute: Routing.initialRoute,
       ),
-      routes: Routing.routes,
-      initialRoute: Routing.initialRoute,
     );
   }
 }

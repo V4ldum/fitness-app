@@ -15,6 +15,8 @@ class Strings {
   static const String videoErrorHeader = "Vidéo inaccessible";
   static const String videoErrorBody =
       "Vérifie ta connexion à Internet. Si le problème persiste, contacte l'administrateur.";
+  static const String unknownErrorHeader = "Une erreur est survenue";
+  static const String unknownErrorBody = "Une erreur inconnue est survenue.";
 
   static const String refreshButton = "Rafraichir";
   static const String loginAlertButton = "OK";
@@ -50,11 +52,14 @@ class Strings {
 
   //Shared Preferences
   static const String notificationSettingKey = "notifications";
+  static const String accessTokenKey = "access_token";
+  static const String refreshTokenKey = "refresh_token";
+
   //API
-  static const String apiHost = "localhost:8000";
-  static const String apiAuthPath = "/user/auth";
-  static const String apiAccessPath = "/user/access";
-  static const String apiRefreshPath = "/user/refesh";
+  static const String apiHost = "192.168.1.20:8000";
+  static const String apiAuthPath = "/login/auth";
+  static const String apiAccessPath = "/login/access";
+  static const String apiRefreshPath = "/login/refesh";
   static const String apiPicturePath = "/user/picture";
   static const String apiDailyPath = "/daily";
   static const String apiDailyAssetsPath = "/daily/asset";

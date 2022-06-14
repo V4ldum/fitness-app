@@ -6,8 +6,6 @@ import '../domain/domain.dart';
 class ProfileProvider extends ChangeNotifier {
   late final ProfileRepository _service;
 
-  Profile? _profile;
-
   int _notificationSelectedItem = 0;
 
   bool _isLoadingExternal = false;
@@ -21,14 +19,6 @@ class ProfileProvider extends ChangeNotifier {
   ProfileProvider.fromService(ProfileRepository ps) {
     _service = ps;
     _loadProfile();
-  }
-
-  String get imageUrl {
-    return _profile?.imageUrl ?? "assets/strong_cat.png"; //TODO baseline image
-  }
-
-  String get name {
-    return _profile?.name ?? "";
   }
 
   bool get isLoadingExternal => _isLoadingExternal;
@@ -54,15 +44,12 @@ class ProfileProvider extends ChangeNotifier {
   void _loadProfile() async {
     _changeLoadingStateProfile();
 
-    List out = await Future.wait([
-      _service.getProfile(),
-      _service.getSetting(Strings.notificationSettingKey),
-    ]);
+    String? out = await _service.getSetting(Strings.notificationSettingKey);
 
-    _profile = out[0] as Profile;
+    //_profile = out[0] as Profile;
     _notificationSelectedItem = Notifications.values
         .firstWhere(
-          (e) => e.name == (out[1] as String),
+          (e) => e.name == out,
           orElse: () => Notifications.Toutes,
         )
         .index;

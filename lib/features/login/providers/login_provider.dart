@@ -1,11 +1,14 @@
-import 'package:fitness_app/features/login/domain/repository/login_repository.dart';
+import 'package:fitness_app/config/strings.dart';
+import 'package:fitness_app/features/app_wide/domain/domain.dart';
+import 'package:fitness_app/features/daily/index.dart';
+import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:flutter/widgets.dart';
 
-import '../domain/models/user.dart';
-import '../domain/services/login_service.dart';
+import '../domain/domain.dart';
 
 class LoginProvider extends ChangeNotifier {
-  final User _user = User();
+  String _username = "";
+  String _password = "";
   late final LoginRepository _service;
   bool _isLoading = false;
 
@@ -18,20 +21,20 @@ class LoginProvider extends ChangeNotifier {
   }
 
   String get username {
-    return _user.username;
+    return _username;
   }
 
   set username(String value) {
-    _user.username = value;
+    _username = value;
     notifyListeners();
   }
 
   String get password {
-    return _user.password;
+    return _password;
   }
 
   set password(String value) {
-    _user.password = value;
+    _password = value;
     notifyListeners();
   }
 
@@ -44,9 +47,9 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> login() async {
+  Future<APIResponse<User>> login() async {
     _changeLoadingState();
-    bool out = await _service.login(_user.username, _user.password);
+    final APIResponse<User> out = await _service.login(_username, _password);
     _changeLoadingState();
 
     return out;
@@ -66,5 +69,71 @@ class LoginProvider extends ChangeNotifier {
     _changeLoadingState();
 
     return out;
+  }
+
+  void _openAlert(BuildContext context, LoginErrorType e) {
+    Map<LoginErrorType, List<String>> errorData = {
+      LoginErrorType.password: [
+        Strings.loginErrorHeader,
+        Strings.loginErrorBody
+      ],
+      LoginErrorType.network: [
+        Strings.networkErrorHeader,
+        Strings.networkErrorBody
+      ],
+      LoginErrorType.unknown: [
+        Strings.unknownErrorHeader,
+        Strings.unknownErrorBody
+      ],
+    };
+
+    PopupAlert.open(
+      context: context,
+      title: errorData[e]![0],
+      desc: "\n${errorData[e]![1]}",
+      buttons: [
+        AlertButton(
+          onPressed: () => Navigator.pop(context),
+          text: Strings.loginAlertButton,
+        ),
+      ],
+    ).show();
+  }
+
+  void onPressedLoginButton(BuildContext context) {
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    Map<APICode, Function()> switcher = {
+      APICode.ok: () =>
+          Navigator.pushReplacementNamed(context, WeekScreen.route),
+      APICode.notfound: () => _openAlert(context, LoginErrorType.network),
+      APICode.unauthorized: () => _openAlert(context, LoginErrorType.password),
+    };
+
+    login().then((response) {
+      Function()? switcherOutput = switcher[response.statusCode];
+
+      if (switcherOutput != null) {
+        switcherOutput();
+      } else {
+        _openAlert(context, LoginErrorType.unknown);
+      }
+    });
+  }
+
+  void onPressedOpenRegistrationButton(BuildContext context) async {
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    if (!await openRegistrationPage()) {
+      _openAlert(context, LoginErrorType.network);
+    }
+  }
+
+  void onPressedForgottenPasswordButton(BuildContext context) async {
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    if (!await openForgottenPasswordPage()) {
+      _openAlert(context, LoginErrorType.network);
+    }
   }
 }

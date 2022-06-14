@@ -1,9 +1,5 @@
-import '../models/profile.dart';
-
 abstract class ProfileRepository {
   const ProfileRepository();
-
-  Future<Profile> getProfile();
 
   Future<bool> openMyAccount();
   Future<void> openAppSettings();

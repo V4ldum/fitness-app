@@ -1,3 +1,5 @@
+import 'package:fitness_app/features/app_wide/domain/domain.dart';
+import 'package:fitness_app/features/login/domain/domain.dart';
 import 'package:fitness_app/features/login/domain/services/login_service.dart';
 import 'package:fitness_app/features/login/providers/login_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -43,12 +45,14 @@ main() {
 
   group("login()", () {
     void arrangeLoginServiceLoginDefaultValues() {
-      when(() => service.login("", "")).thenAnswer((_) async => true);
+      when(() => service.login("", ""))
+          .thenAnswer((_) async => APIResponse(APICode.unauthorized, null));
     }
 
     void arrangeLoginServiceLoginTestingValues() {
       when(() => service.login("Testing username", "Testing password"))
-          .thenAnswer((_) async => true);
+          .thenAnswer((_) async =>
+              APIResponse(APICode.ok, User(username: "", fullName: "")));
     }
 
     test(

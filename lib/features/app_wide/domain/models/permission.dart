@@ -1,0 +1,4 @@
+enum Permission {
+  daily,
+  other,
+}

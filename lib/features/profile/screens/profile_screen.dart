@@ -1,4 +1,5 @@
 import 'package:fitness_app/config/index.dart';
+import 'package:fitness_app/features/app_wide/index.dart';
 import 'package:fitness_app/features/login/screens/login_screen.dart';
 import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:fitness_app/shared/widgets/app_bar/app_bar.dart';
@@ -27,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
         AlertButton(
           text: Strings.logOutAccept,
           onPressed: () {
+            context.read<AppWideProvider>().deleteTokens();
             Navigator.pushNamedAndRemoveUntil(
               context,
               LoginScreen.route,

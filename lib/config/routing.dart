@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/app_wide/screens/loading_start_page.dart';
 import 'package:fitness_app/features/chronometer/screens/clock_screen.dart';
 import 'package:fitness_app/features/comments/screens/comments_screen.dart';
 import 'package:fitness_app/features/daily/screens/day_screen.dart';
@@ -11,15 +12,16 @@ class Routing {
   Routing._();
 
   static Map<String, Widget Function(BuildContext)> routes = {
-    ClockScreen.route: (context) => const ClockScreen(),
+    LoadingStartPage.route: (context) => const LoadingStartPage(),
     LoginScreen.route: (context) => const LoginScreen(),
     WeekScreen.route: (context) => const WeekScreen(),
+    ProfileScreen.route: (context) => const ProfileScreen(),
+    CommentsScreen.route: (context) => const CommentsScreen(),
+    DayScreen.route: (context) => const DayScreen(),
     PreviewScreen.route: (context) => PreviewScreen(
         videoAsset:
             (ModalRoute.of(context)?.settings.arguments! as List<String>)[0]),
-    DayScreen.route: (context) => const DayScreen(),
-    ProfileScreen.route: (context) => const ProfileScreen(),
-    CommentsScreen.route: (context) => const CommentsScreen(),
+    ClockScreen.route: (context) => const ClockScreen(),
   };
-  static String initialRoute = LoginScreen.route;
+  static String initialRoute = LoadingStartPage.route;
 }

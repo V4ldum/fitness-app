@@ -1,6 +1,5 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/features/profile/domain/models/profile.dart';
 import 'package:fitness_app/shared/helpers/network.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,15 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../repository/profile_repository.dart';
 
 class ProfileService implements ProfileRepository {
-  @override
-  Future<Profile> getProfile() async {
-    await Network.emulate();
-    return Profile(
-      name: "Cat Bumstead",
-      imageUrl: "assets/strong_cat.png",
-    ); //TODO network query
-  }
-
   @override
   Future<void> openAppSettings() {
     return AppSettings.openAppSettings();
