@@ -1,5 +1,9 @@
+import 'package:fitness_app/config/index.dart';
+import 'package:fitness_app/features/app_wide/index.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/providers.dart';
 import 'big_avatar.dart';
 import 'profile_name.dart';
 
@@ -8,21 +12,21 @@ class ProfileHeader extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  //TODO profile.json
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         BigAvatar(
-          image: "", //TODO //context.watch<ProfileProvider>().imageUrl,
+          image:
+              "http://${Strings.apiHost}${Strings.apiPicturePath}?token=${context.read<AppWideProvider>().accessToken}",
           onPressEditButton: () {
-            //context.read<ProfileProvider>().updateImage();
+            context.read<ProfileProvider>().updateImage();
           },
         ),
         const SizedBox(height: 15.0),
-        const ProfileName(
-          name: "", //context.watch<ProfileProvider>().name,
-        ), //TODO
+        ProfileName(
+          name: context.read<AppWideProvider>().user?.fullName ?? "",
+        ),
       ],
     );
   }

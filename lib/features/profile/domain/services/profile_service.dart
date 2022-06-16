@@ -38,51 +38,6 @@ class ProfileService implements ProfileRepository {
   @override
   void updateImage() {
     // TODO: implement updateImage
-    print("Update image");
+    print("Not Implemented");
   }
 }
-//TODO json version
-/*
-static Future<Map> profile() async {
-    //emulate API call
-    return json.decode(await rootBundle.loadString('assets/profile.json'));
-  }
-*/
-
-/*
-
-class Settings extends ChangeNotifier {
-  late SharedPreferences _prefs;
-
-  Notifications _notifications = Notifications.all;
-
-  Settings() {
-    _init();
-  }
-
-  Future<void> _initPrefs() async {
-    _prefs = await SharedPreferences.getInstance();
-  }
-
-  Future<void> _init() async {
-    await _initPrefs();
-
-    _notifications = Notifications
-        .values[_prefs.getInt(SettingsKey.notifications.toString())!];
-    notifyListeners();
-  }
-
-  Notifications get notifications => _notifications;
-  set notifications(Notifications n) {
-    _notifications = n;
-    writeNotification(n);
-
-    notifyListeners();
-  }
-
-  Future<void> writeNotification(Notifications n) async {
-    _prefs.setInt(SettingsKey.notifications.toString(), n.index);
-  }
-}
-
- */

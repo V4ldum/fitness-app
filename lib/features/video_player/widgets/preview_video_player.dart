@@ -11,18 +11,6 @@ class PreviewVideoPlayer extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  void playpause(VideoPlayerProvider vpp) {
-    if (vpp.isDonePlaying) {
-      vpp.replay();
-    } else {
-      if (vpp.isPlaying) {
-        vpp.pause();
-      } else {
-        vpp.play();
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -62,9 +50,7 @@ class PreviewVideoPlayer extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.2,
                   height: MediaQuery.of(context).size.height - 130,
                   child: GestureDetector(
-                    onTap: () {
-                      playpause(context.read<VideoPlayerProvider>());
-                    },
+                    onTap: context.read<VideoPlayerProvider>().playpause,
                     onDoubleTap: context.read<VideoPlayerProvider>().backward10,
                   ),
                 ),
@@ -75,9 +61,7 @@ class PreviewVideoPlayer extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.6,
                       height: MediaQuery.of(context).size.height - 130,
                       child: GestureDetector(
-                        onTap: () {
-                          playpause(context.read<VideoPlayerProvider>());
-                        },
+                        onTap: context.read<VideoPlayerProvider>().playpause,
                       ),
                     ),
                     Visibility(
@@ -94,8 +78,8 @@ class PreviewVideoPlayer extends StatelessWidget {
                           ),
                         ),
                         child: VideoPlayerReplayButton(
-                            onPressed:
-                                context.read<VideoPlayerProvider>().replay),
+                          onPressed: context.read<VideoPlayerProvider>().replay,
+                        ),
                       ),
                     ),
                   ],
@@ -104,9 +88,7 @@ class PreviewVideoPlayer extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.2,
                   height: MediaQuery.of(context).size.height - 130,
                   child: GestureDetector(
-                    onTap: () {
-                      playpause(context.read<VideoPlayerProvider>());
-                    },
+                    onTap: context.read<VideoPlayerProvider>().playpause,
                     onDoubleTap: context.read<VideoPlayerProvider>().forward10,
                   ),
                 ),

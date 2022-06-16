@@ -20,14 +20,7 @@ class VideoPlayerButtons extends StatelessWidget {
         ),
         const SizedBox(width: 20.0),
         VideoPlayerPlayPauseButton(
-          onPressed: () {
-            VideoPlayerProvider provider = context.read<VideoPlayerProvider>();
-            if (provider.isPlaying) {
-              provider.pause();
-            } else {
-              provider.play();
-            }
-          },
+          onPressed: context.read<VideoPlayerProvider>().playpause,
           isPlaying: context.watch<VideoPlayerProvider>().isPlaying,
         ),
         const SizedBox(width: 20.0),

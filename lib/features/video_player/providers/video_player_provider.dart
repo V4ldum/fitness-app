@@ -50,6 +50,16 @@ class VideoPlayerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void playpause() {
+    if (isDonePlaying) {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
+    }
+  }
+
   void forward10() {
     _vps.forward10(_controller);
   }

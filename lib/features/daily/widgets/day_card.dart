@@ -40,6 +40,7 @@ class DayCard extends StatelessWidget {
                     ? const SizedBox()
                     : CardButton(
                         onPressed: () {
+                          //TODO move to provider?
                           program.startProgram();
                           Navigator.pushNamed(
                             context,

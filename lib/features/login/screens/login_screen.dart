@@ -1,3 +1,4 @@
+import 'package:fitness_app/config/strings.dart';
 import 'package:fitness_app/shared/big_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,10 @@ class LoginScreen extends StatelessWidget {
                       visible: MediaQuery.of(context).viewInsets.bottom == 0,
                       child: const Padding(
                         padding: EdgeInsets.only(bottom: 40.0),
-                        child: BigLogo(),
+                        child: Hero(
+                          tag: Strings.heroBigLogo,
+                          child: BigLogo(),
+                        ),
                       ),
                     ),
                     const LoginForm(),

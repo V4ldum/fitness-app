@@ -51,8 +51,11 @@ main() {
 
     void arrangeLoginServiceLoginTestingValues() {
       when(() => service.login("Testing username", "Testing password"))
-          .thenAnswer((_) async =>
-              APIResponse(APICode.ok, User(username: "", fullName: "")));
+          .thenAnswer((_) async => APIResponse(APICode.ok, {
+                "access_token": "token",
+                "refresh_token": "token",
+                "user": User(username: "", fullName: ""),
+              }));
     }
 
     test(

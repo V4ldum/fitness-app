@@ -14,7 +14,8 @@ class LoginService implements LoginRepository {
   // 401 -> mauvais username/password
   // 200 -> ok
   @override
-  Future<APIResponse<User>> login(String username, String password) async {
+  Future<APIResponse<Map<String, Object>>> login(
+      String username, String password) async {
     final http.Response response;
 
     try {
@@ -24,7 +25,7 @@ class LoginService implements LoginRepository {
       }));
     } on SocketException {
       // API Down
-      return APIResponse<User>(APICode.notfound, null);
+      return APIResponse<Map<String, Object>>(APICode.notfound, null);
     }
 
     Map<int, Function()> switcher = {
@@ -32,10 +33,14 @@ class LoginService implements LoginRepository {
         var decoded = jsonDecode(response.body);
         AppWideService()
             .updateTokens(decoded["access_token"], decoded["refresh_token"]);
-        return APIResponse<User>(APICode.ok, User.fromJson(decoded["result"]));
+        return APIResponse<Map<String, Object>>(APICode.ok, {
+          "user": User.fromJson(decoded["result"]),
+          "access_token": decoded["access_token"],
+          "refresh_token": decoded["refresh_token"],
+        });
       },
-      401: () => APIResponse<User>(APICode.unauthorized, null),
-      404: () => APIResponse<User>(APICode.notfound, null),
+      401: () => APIResponse<Map<String, Object>>(APICode.unauthorized, null),
+      404: () => APIResponse<Map<String, Object>>(APICode.notfound, null),
     };
 
     return switcher[response.statusCode]!();

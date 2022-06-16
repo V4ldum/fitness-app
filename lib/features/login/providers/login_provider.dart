@@ -1,8 +1,9 @@
 import 'package:fitness_app/config/strings.dart';
-import 'package:fitness_app/features/app_wide/domain/domain.dart';
+import 'package:fitness_app/features/app_wide/index.dart';
 import 'package:fitness_app/features/daily/index.dart';
 import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 import '../domain/domain.dart';
 
@@ -47,9 +48,10 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<APIResponse<User>> login() async {
+  Future<APIResponse<Map<String, Object>>> login() async {
     _changeLoadingState();
-    final APIResponse<User> out = await _service.login(_username, _password);
+    final APIResponse<Map<String, Object>> out =
+        await _service.login(_username, _password);
     _changeLoadingState();
 
     return out;
@@ -104,14 +106,20 @@ class LoginProvider extends ChangeNotifier {
     FocusManager.instance.primaryFocus?.unfocus();
 
     Map<APICode, Function()> switcher = {
-      APICode.ok: () =>
-          Navigator.pushReplacementNamed(context, WeekScreen.route),
+      APICode.ok: () {
+        return Navigator.pushReplacementNamed(context, WeekScreen.route);
+      },
       APICode.notfound: () => _openAlert(context, LoginErrorType.network),
       APICode.unauthorized: () => _openAlert(context, LoginErrorType.password),
     };
 
     login().then((response) {
       Function()? switcherOutput = switcher[response.statusCode];
+      context.read<AppWideProvider>().user = response.content?["user"] as User?;
+      context.read<AppWideProvider>().accessToken =
+          response.content?["access_token"] as String?;
+      context.read<AppWideProvider>().refreshToken =
+          response.content?["refresh_token"] as String?;
 
       if (switcherOutput != null) {
         switcherOutput();

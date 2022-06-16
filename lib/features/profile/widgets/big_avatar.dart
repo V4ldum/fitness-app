@@ -23,7 +23,8 @@ class BigAvatar extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Palette.primary,
             radius: 97.0,
-            backgroundImage: AssetImage(image),
+            backgroundImage: const AssetImage(Images.profilePicturePlaceholder),
+            foregroundImage: NetworkImage(image),
           ),
         ),
         if (onPressEditButton != null)

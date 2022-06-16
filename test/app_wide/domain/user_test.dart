@@ -14,7 +14,6 @@ main() {
         expect(sut.username, "");
         expect(sut.fullName, "");
         expect(sut.permissions.length, 0);
-        expect(sut.imagePath, null);
       },
     );
     test(
@@ -23,15 +22,13 @@ main() {
         User sut = User(
           username: "test",
           fullName: "test user",
-          imagePath: "path",
           permissions: [0],
         );
 
         expect(sut.username, "test");
         expect(sut.fullName, "test user");
         expect(sut.permissions.length, 1);
-        expect(sut.permissions[0], Permission.daily);
-        expect(sut.imagePath, "path");
+        expect(sut.permissions[0], Permission.Daily);
       },
     );
     test(
@@ -43,8 +40,8 @@ main() {
           permissions: [0, 1],
         );
         expect(sut.permissions.length, 2);
-        expect(sut.permissions[0], Permission.daily);
-        expect(sut.permissions[1], Permission.other);
+        expect(sut.permissions[0], Permission.Daily);
+        expect(sut.permissions[1], Permission.Other);
       },
     );
   });
@@ -52,36 +49,13 @@ main() {
   group("User JSON", () {
     test("full construction", () {
       String jsonString =
-          '{"username":"test","full_name":"test user","image_path":"path","permissions":[0]}';
-      User sut = User.fromJson(json.decode(jsonString));
-
-      expect(sut.username, "test");
-      expect(sut.fullName, "test user");
-      expect(sut.permissions.length, 1);
-      expect(sut.permissions[0], Permission.daily);
-      expect(sut.imagePath, "path");
-    });
-    test("imagePath is null", () {
-      String jsonString =
-          '{"username":"test","full_name":"test user","image_path":null,"permissions":[0]}';
-      User sut = User.fromJson(json.decode(jsonString));
-
-      expect(sut.username, "test");
-      expect(sut.fullName, "test user");
-      expect(sut.permissions.length, 1);
-      expect(sut.permissions[0], Permission.daily);
-      expect(sut.imagePath, null);
-    });
-    test("imagePath is missing", () {
-      String jsonString =
           '{"username":"test","full_name":"test user","permissions":[0]}';
       User sut = User.fromJson(json.decode(jsonString));
 
       expect(sut.username, "test");
       expect(sut.fullName, "test user");
       expect(sut.permissions.length, 1);
-      expect(sut.permissions[0], Permission.daily);
-      expect(sut.imagePath, null);
+      expect(sut.permissions[0], Permission.Daily);
     });
     test("permissions array empty", () {
       String jsonString =
@@ -91,7 +65,6 @@ main() {
       expect(sut.username, "test");
       expect(sut.fullName, "test user");
       expect(sut.permissions.length, 0);
-      expect(sut.imagePath, null);
     });
     test("permissions array missing", () {
       String jsonString = '{"username":"test","full_name":"test user"}';
@@ -100,7 +73,6 @@ main() {
       expect(sut.username, "test");
       expect(sut.fullName, "test user");
       expect(sut.permissions.length, 0);
-      expect(sut.imagePath, null);
     });
     test("permissions array has multiple values", () {
       String jsonString =
@@ -110,9 +82,8 @@ main() {
       expect(sut.username, "test");
       expect(sut.fullName, "test user");
       expect(sut.permissions.length, 2);
-      expect(sut.permissions[0], Permission.daily);
-      expect(sut.permissions[1], Permission.other);
-      expect(sut.imagePath, null);
+      expect(sut.permissions[0], Permission.Daily);
+      expect(sut.permissions[1], Permission.Other);
     });
     test("permissions array has multiple values unsorted", () {
       String jsonString =
@@ -122,9 +93,8 @@ main() {
       expect(sut.username, "test");
       expect(sut.fullName, "test user");
       expect(sut.permissions.length, 2);
-      expect(sut.permissions[0], Permission.other);
-      expect(sut.permissions[1], Permission.daily);
-      expect(sut.imagePath, null);
+      expect(sut.permissions[0], Permission.Other);
+      expect(sut.permissions[1], Permission.Daily);
     });
   });
 }

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:fitness_app/config/index.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,13 +44,7 @@ class Settings extends StatelessWidget {
                   Notifications.Aucune,
                 ],
                 selectedItem: provider.notificationSelectedItem,
-                onOptionChanged: (Notifications value) {
-                  provider.notificationSelectedItem = value.index;
-                  provider.saveSetting(
-                    Strings.notificationSettingKey,
-                    value.name,
-                  );
-                },
+                onOptionChanged: provider.onNotificationOptionChanged,
               );
             },
           ),

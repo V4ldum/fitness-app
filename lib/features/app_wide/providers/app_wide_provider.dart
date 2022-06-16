@@ -1,72 +1,103 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitness_app/features/app_wide/domain/domain.dart';
-import 'package:fitness_app/features/daily/index.dart';
-import 'package:fitness_app/features/login/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppWideProvider extends ChangeNotifier {
   String? accessToken;
   String? refreshToken;
-  final AppWideRepository _service = AppWideService();
+  late final AppWideRepository _service;
   User? user;
 
-  Future<void> authenticate(BuildContext context) async {
+  AppWideProvider() {
+    _service = AppWideService();
+  }
+
+  AppWideProvider.fromService(AppWideRepository awr) {
+    _service = awr;
+  }
+
+  Future<bool> _accessTokenAuthentication() async {
+    // Access token not found
+    if (accessToken == null) {
+      return false;
+    }
+    APIResponse<User> response = await _service.authenticate(accessToken!);
+
+    // Access token is invalid
+    if (response.statusCode != APICode.ok) {
+      return false;
+    }
+
+    user = response.content;
+    _loadAppData();
+    return true;
+  }
+
+  Future<bool> _refreshTokenAuthentication() async {
+    // Refresh token not found
+    if (refreshToken == null) {
+      return false;
+    }
+    APIResponse<Map<String, String>> response =
+        await _service.refresh(refreshToken!);
+
+    // Refresh token is invalid
+    if (response.statusCode != APICode.ok) {
+      return false;
+    }
+
+    //New access token
+    accessToken = response.content!["access_token"];
+    //New refresh token for security
+    refreshToken = response.content!["refresh_token"];
+
+    // In case new access token is invalid for some obscure reason
+    if (!await _accessTokenAuthentication()) {
+      return false;
+    }
+
+    _service.updateTokens(accessToken!, refreshToken!);
+    return true;
+  }
+
+  Future<bool> authenticate() async {
+    Future<void> minLoadingDuration =
+        Future.delayed(const Duration(milliseconds: 500));
     Future<String?> refreshTokenFuture = _service.getRefreshToken();
     accessToken = await _service.getAccessToken();
 
-    // Access token found on system
-    if (accessToken != null) {
-      APIResponse<User> authenticationCall =
-          await _service.authenticate(accessToken!);
+    if (await _accessTokenAuthentication()) {
+      // Access token OK
+      await minLoadingDuration;
+      return true;
+    } else {
+      // Access token KO
+      refreshToken = await refreshTokenFuture;
 
-      // Access token is valid
-      if (authenticationCall.statusCode == APICode.ok) {
-        user = authenticationCall.content;
-        _loadAppData();
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(context, WeekScreen.route);
-        return;
+      if (await _refreshTokenAuthentication()) {
+        // Refresh token OK
+        await minLoadingDuration;
+        return true;
+      } else {
+        // Access token & Refresh token KO
+        deleteTokens();
+        await minLoadingDuration;
+        return false;
       }
     }
-
-    refreshToken = await refreshTokenFuture;
-    // Access token is not valid but refresh token is found
-    if (refreshToken != null) {
-      APIResponse<Map<String, String>> refreshCall =
-          await _service.refresh(refreshToken!);
-
-      // Refresh token is valid
-      if (refreshCall.statusCode == APICode.ok) {
-        //New refresh token for security
-        refreshToken = refreshCall.content!["refresh_token"];
-        //New access token
-        accessToken = refreshCall.content!["access_token"];
-
-        APIResponse<User> refreshAuthenticationCall =
-            await _service.authenticate(accessToken!);
-
-        // Access token is valid (in case it isn't for some reason)
-        if (refreshAuthenticationCall.statusCode == APICode.ok) {
-          _service.updateTokens(accessToken!, refreshToken!);
-          _loadAppData();
-          // ignore: use_build_context_synchronously
-          Navigator.pushReplacementNamed(context, WeekScreen.route);
-          return;
-        }
-      }
-    }
-    // Access token & refresh token both not found or invalid
-    accessToken = null;
-    refreshToken = null;
-    // ignore: use_build_context_synchronously
-    Navigator.pushReplacementNamed(context, LoginScreen.route);
   }
 
   Future<void> _loadAppData() async {
-    //TODO query profile picture
+    //TODO query data?
     print("query data");
   }
 
   void deleteTokens() {
-    _service.deleteTokens();
+    if (accessToken != null || refreshToken != null) {
+      _service.deleteTokens();
+      accessToken = null;
+      refreshToken = null;
+    }
   }
 }

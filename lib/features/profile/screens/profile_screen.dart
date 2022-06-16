@@ -24,7 +24,6 @@ class ProfileScreen extends StatelessWidget {
           text: Strings.logOutDeny,
           onPressed: () => Navigator.pop(context),
         ),
-        //TODO retirer la méthode d'authentification + se déco
         AlertButton(
           text: Strings.logOutAccept,
           onPressed: () {
@@ -40,7 +39,6 @@ class ProfileScreen extends StatelessWidget {
     ).show();
   }
 
-  //TODO profile.json + change image button
   @override
   Widget build(BuildContext context) {
     return Scaffold(

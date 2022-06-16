@@ -1,5 +1,9 @@
 import 'package:fitness_app/config/index.dart';
+import 'package:fitness_app/features/app_wide/providers/app_wide_provider.dart';
+import 'package:fitness_app/features/login/screens/login_screen.dart';
+import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../domain/domain.dart';
 
@@ -46,7 +50,6 @@ class ProfileProvider extends ChangeNotifier {
 
     String? out = await _service.getSetting(Strings.notificationSettingKey);
 
-    //_profile = out[0] as Profile;
     _notificationSelectedItem = Notifications.values
         .firstWhere(
           (e) => e.name == out,
@@ -57,6 +60,30 @@ class ProfileProvider extends ChangeNotifier {
     _changeLoadingStateProfile();
   }
 
+  void _openAlert(BuildContext context) {
+    PopupAlert.open(
+      context: context,
+      desc: Strings.logOutMessage,
+      buttons: [
+        AlertButton(
+          text: Strings.logOutDeny,
+          onPressed: () => Navigator.pop(context),
+        ),
+        AlertButton(
+          text: Strings.logOutAccept,
+          onPressed: () {
+            context.read<AppWideProvider>().deleteTokens();
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              LoginScreen.route,
+              (_) => false,
+            );
+          },
+        ),
+      ],
+    ).show();
+  }
+
   Future<bool> openMyAccountPage() async {
     _changeLoadingStateExternal();
     bool out = await _service.openMyAccount();
@@ -65,7 +92,7 @@ class ProfileProvider extends ChangeNotifier {
     return out;
   }
 
-  void openAppSettings() async {
+  Future<void> openAppSettings() async {
     _changeLoadingStateExternal();
     await _service.openAppSettings();
     _changeLoadingStateExternal();
@@ -85,6 +112,18 @@ class ProfileProvider extends ChangeNotifier {
 
   void updateImage() {
     // TODO: implement updateImage
-    print("update image");
+    print("Not Implemented");
+  }
+
+  void onLogOutButtonPressed(BuildContext context) {
+    _openAlert(context);
+  }
+
+  void onNotificationOptionChanged(Notifications value) {
+    notificationSelectedItem = value.index;
+    saveSetting(
+      Strings.notificationSettingKey,
+      value.name,
+    );
   }
 }
