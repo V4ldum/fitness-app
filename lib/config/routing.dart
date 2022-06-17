@@ -1,9 +1,9 @@
 import 'package:fitness_app/features/app_wide/screens/loading_start_page.dart';
 import 'package:fitness_app/features/chronometer/screens/clock_screen.dart';
 import 'package:fitness_app/features/comments/screens/comments_screen.dart';
-import 'package:fitness_app/features/daily/screens/day_screen.dart';
-import 'package:fitness_app/features/daily/screens/week_screen.dart';
+import 'package:fitness_app/features/daily/day_screen.dart';
 import 'package:fitness_app/features/login/screens/login_screen.dart';
+import 'package:fitness_app/features/main/screens/week_screen.dart';
 import 'package:fitness_app/features/profile/screens/profile_screen.dart';
 import 'package:fitness_app/features/video_player/screens/preview_screen.dart';
 import 'package:flutter/widgets.dart';

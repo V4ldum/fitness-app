@@ -1,9 +1,5 @@
-import 'package:fitness_app/config/strings.dart';
 import 'package:fitness_app/features/app_wide/index.dart';
-import 'package:fitness_app/features/daily/index.dart';
-import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 
 import '../domain/domain.dart';
 
@@ -71,77 +67,5 @@ class LoginProvider extends ChangeNotifier {
     _changeLoadingState();
 
     return out;
-  }
-
-  void _openAlert(BuildContext context, LoginErrorType e) {
-    Map<LoginErrorType, List<String>> errorData = {
-      LoginErrorType.password: [
-        Strings.loginErrorHeader,
-        Strings.loginErrorBody
-      ],
-      LoginErrorType.network: [
-        Strings.networkErrorHeader,
-        Strings.networkErrorBody
-      ],
-      LoginErrorType.unknown: [
-        Strings.unknownErrorHeader,
-        Strings.unknownErrorBody
-      ],
-    };
-
-    PopupAlert.open(
-      context: context,
-      title: errorData[e]![0],
-      desc: "\n${errorData[e]![1]}",
-      buttons: [
-        AlertButton(
-          onPressed: () => Navigator.pop(context),
-          text: Strings.loginAlertButton,
-        ),
-      ],
-    ).show();
-  }
-
-  void onPressedLoginButton(BuildContext context) {
-    FocusManager.instance.primaryFocus?.unfocus();
-
-    Map<APICode, Function()> switcher = {
-      APICode.ok: () {
-        return Navigator.pushReplacementNamed(context, WeekScreen.route);
-      },
-      APICode.notfound: () => _openAlert(context, LoginErrorType.network),
-      APICode.unauthorized: () => _openAlert(context, LoginErrorType.password),
-    };
-
-    login().then((response) {
-      Function()? switcherOutput = switcher[response.statusCode];
-      context.read<AppWideProvider>().user = response.content?["user"] as User?;
-      context.read<AppWideProvider>().accessToken =
-          response.content?["access_token"] as String?;
-      context.read<AppWideProvider>().refreshToken =
-          response.content?["refresh_token"] as String?;
-
-      if (switcherOutput != null) {
-        switcherOutput();
-      } else {
-        _openAlert(context, LoginErrorType.unknown);
-      }
-    });
-  }
-
-  void onPressedOpenRegistrationButton(BuildContext context) async {
-    FocusManager.instance.primaryFocus?.unfocus();
-
-    if (!await openRegistrationPage()) {
-      _openAlert(context, LoginErrorType.network);
-    }
-  }
-
-  void onPressedForgottenPasswordButton(BuildContext context) async {
-    FocusManager.instance.primaryFocus?.unfocus();
-
-    if (!await openForgottenPasswordPage()) {
-      _openAlert(context, LoginErrorType.network);
-    }
   }
 }

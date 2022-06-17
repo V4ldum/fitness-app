@@ -1,10 +1,13 @@
 import 'package:fitness_app/config/images.dart';
+import 'package:fitness_app/config/index.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../icon_text_button.dart';
 import 'error_body.dart';
 
 class ErrorPage extends StatelessWidget {
+  final String image;
   final String title;
   final String content;
   final Function()? onPressed;
@@ -13,6 +16,7 @@ class ErrorPage extends StatelessWidget {
 
   const ErrorPage({
     Key? key,
+    this.image = Images.errorImage,
     required this.title,
     required this.content,
     this.onPressed,
@@ -25,12 +29,13 @@ class ErrorPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Image(
+          Image(
             height: 250.0,
-            image: AssetImage(Images.errorImage),
+            color: Palette.tint3,
+            image: AssetImage(image),
           ),
           const SizedBox(height: 15.0),
           ErrorBody(

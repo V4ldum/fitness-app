@@ -17,6 +17,9 @@ class Strings {
       "Vérifie ta connexion à Internet. Si le problème persiste, contacte l'administrateur.";
   static const String unknownErrorHeader = "Une erreur est survenue";
   static const String unknownErrorBody = "Une erreur inconnue est survenue.";
+  static const String noContentErrorHeader = "Il n'y a rien par ici";
+  static const String noContentErrorBody =
+      "Tu n'as accès à aucun service. Abonne-toi pour pouvoir y accéder.";
 
   static const String refreshButton = "Rafraichir";
   static const String loginAlertButton = "OK";
@@ -61,8 +64,8 @@ class Strings {
   static const String apiAccessPath = "/login/access";
   static const String apiRefreshPath = "/login/refesh";
   static const String apiPicturePath = "/user/picture";
-  static const String apiDailyPath = "/daily";
-  static const String apiDailyAssetsPath = "/daily/asset";
+  static const String apiDailyPath = "/main";
+  static const String apiDailyAssetsPath = "/main/asset";
 
   //Hero
   static const String heroBigLogo = "big_logo";

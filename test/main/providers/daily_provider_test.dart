@@ -1,17 +1,17 @@
-import 'package:fitness_app/features/daily/domain/services/daily_service.dart';
-import 'package:fitness_app/features/daily/providers/providers.dart';
+import 'package:fitness_app/features/main/domain/services/main_service.dart';
+import 'package:fitness_app/features/main/providers/providers.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDailyService extends Mock implements DailyService {}
+class MockDailyService extends Mock implements MainService {}
 
 main() {
-  late DailyProvider sut;
+  late MainProvider sut;
   late MockDailyService service;
 
   setUp(() {
     service = MockDailyService();
-    sut = DailyProvider.fromService(service);
+    sut = MainProvider.fromService(service);
   });
 
   test("Initial values are correct", () {

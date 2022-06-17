@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fitness_app/features/daily/domain/domain.dart';
+import 'package:fitness_app/features/main/domain/domain.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

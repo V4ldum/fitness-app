@@ -10,7 +10,14 @@ class MyBottomNavigationBar extends StatelessWidget {
     Permission.Other: Icons.question_mark,
   };
 
-  const MyBottomNavigationBar({Key? key}) : super(key: key);
+  final int selectedIndex;
+  final Function(int)? onTap;
+
+  const MyBottomNavigationBar({
+    Key? key,
+    this.selectedIndex = 0,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +29,8 @@ class MyBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: Palette.tint1,
       selectedItemColor: Palette.accent,
+      currentIndex: selectedIndex,
+      onTap: onTap,
       items: [
         for (var item in user.permissions)
           BottomNavigationBarItem(

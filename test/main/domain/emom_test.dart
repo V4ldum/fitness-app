@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:fitness_app/features/daily/domain/models/emom.dart';
-import 'package:fitness_app/features/daily/domain/models/exercise.dart';
+import 'package:fitness_app/features/main/domain/models/emom.dart';
+import 'package:fitness_app/features/main/domain/models/exercise.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

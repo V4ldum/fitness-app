@@ -1,8 +1,8 @@
 import 'package:fitness_app/config/index.dart';
 import 'package:flutter/material.dart';
 
-import 'features/daily/domain/models/bloc.dart';
-import 'features/daily/domain/models/exercise.dart';
+import 'features/main/domain/models/bloc.dart';
+import 'features/main/domain/models/exercise.dart';
 
 class CardBody extends StatelessWidget {
   final List<Bloc> blocs;

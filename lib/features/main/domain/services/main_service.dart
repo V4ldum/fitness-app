@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:fitness_app/shared/helpers/network.dart';
 import 'package:flutter/services.dart';
 
-import '../repository/daily_repository.dart';
+import '../repository/main_repository.dart';
 
-class DailyService implements DailyRepository {
+class MainService implements MainRepository {
   @override
   Future<List> getProgram() async {
     await Network.emulate();

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:fitness_app/features/daily/domain/models/exercise.dart';
-import 'package:fitness_app/features/daily/domain/models/for_time.dart';
+import 'package:fitness_app/features/main/domain/models/exercise.dart';
+import 'package:fitness_app/features/main/domain/models/for_time.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

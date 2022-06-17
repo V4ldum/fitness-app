@@ -1,13 +1,46 @@
 import 'package:fitness_app/config/index.dart';
+import 'package:fitness_app/features/app_wide/index.dart';
+import 'package:fitness_app/features/main/index.dart';
+import 'package:fitness_app/shared/widgets/alert/alert.dart';
 import 'package:fitness_app/shared/widgets/icon_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/models/login_error_type.dart';
 import '../providers/login_provider.dart';
 import 'widgets.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({Key? key}) : super(key: key);
+
+  void _openAlert(BuildContext context, LoginErrorType e) {
+    Map<LoginErrorType, List<String>> errorData = {
+      LoginErrorType.password: [
+        Strings.loginErrorHeader,
+        Strings.loginErrorBody
+      ],
+      LoginErrorType.network: [
+        Strings.networkErrorHeader,
+        Strings.networkErrorBody
+      ],
+      LoginErrorType.unknown: [
+        Strings.unknownErrorHeader,
+        Strings.unknownErrorBody
+      ],
+    };
+
+    PopupAlert.open(
+      context: context,
+      title: errorData[e]![0],
+      desc: "\n${errorData[e]![1]}",
+      buttons: [
+        AlertButton(
+          onPressed: () => Navigator.pop(context),
+          text: Strings.loginAlertButton,
+        ),
+      ],
+    ).show();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +83,14 @@ class LoginForm extends StatelessWidget {
                   text: Strings.signUpButton,
                   textColor: Palette.accent,
                   backgroundColor: Palette.primary,
-                  onPressed: () {
-                    context
+                  onPressed: () async {
+                    FocusManager.instance.primaryFocus?.unfocus();
+
+                    if (!await context
                         .read<LoginProvider>()
-                        .onPressedForgottenPasswordButton(context);
+                        .openRegistrationPage()) {
+                      _openAlert(context, LoginErrorType.network);
+                    }
                   },
                 ),
               ),
@@ -62,7 +99,36 @@ class LoginForm extends StatelessWidget {
                 child: FormButton(
                   text: Strings.logInButton,
                   onPressed: () {
-                    context.read<LoginProvider>().onPressedLoginButton(context);
+                    FocusManager.instance.primaryFocus?.unfocus();
+
+                    Map<APICode, Function()> switcher = {
+                      APICode.ok: () {
+                        return Navigator.pushReplacementNamed(
+                            context, WeekScreen.route);
+                      },
+                      APICode.notfound: () =>
+                          _openAlert(context, LoginErrorType.network),
+                      APICode.unauthorized: () =>
+                          _openAlert(context, LoginErrorType.password),
+                    };
+
+                    context.read<LoginProvider>().login().then((response) {
+                      Function()? switcherOutput =
+                          switcher[response.statusCode];
+
+                      context.read<AppWideProvider>().user =
+                          response.content?["user"] as User?;
+                      context.read<AppWideProvider>().accessToken =
+                          response.content?["access_token"] as String?;
+                      context.read<AppWideProvider>().refreshToken =
+                          response.content?["refresh_token"] as String?;
+
+                      if (switcherOutput != null) {
+                        switcherOutput();
+                      } else {
+                        _openAlert(context, LoginErrorType.unknown);
+                      }
+                    });
                   },
                 ),
               ),
@@ -72,9 +138,13 @@ class LoginForm extends StatelessWidget {
           IconTextButton(
             text: Strings.forgottenPassword,
             onPressed: () async {
-              context
+              FocusManager.instance.primaryFocus?.unfocus();
+
+              if (!await context
                   .read<LoginProvider>()
-                  .onPressedOpenRegistrationButton(context);
+                  .openForgottenPasswordPage()) {
+                _openAlert(context, LoginErrorType.network);
+              }
             },
           ),
         ],
