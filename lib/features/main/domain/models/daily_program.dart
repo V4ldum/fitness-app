@@ -11,7 +11,7 @@ class DailyProgram {
   String subtitle;
   List<Bloc> blocs;
   String text;
-  int _currentBloc = 1;
+  int _currentBloc = 1; //TODO state ?
 
   bool get isRestDay {
     return text != "";
@@ -50,14 +50,14 @@ class DailyProgram {
   }
 
   void startProgram() {
-    _currentBloc = 1;
+    _currentBloc = 1; //TODO move to provider
   }
 
   void nextBloc() {
-    _currentBloc++;
+    _currentBloc++; //TODO move to provider
   }
 
   Bloc getCurrentBloc() {
-    return blocs[_currentBloc];
+    return blocs[_currentBloc]; //TODO move to provider
   }
 }

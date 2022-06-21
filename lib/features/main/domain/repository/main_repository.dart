@@ -1,3 +1,5 @@
+import 'package:fitness_app/features/main/index.dart';
+
 abstract class MainRepository {
-  Future<List> getProgram();
+  Future<List<DailyProgram>?> getProgram(String token);
 }

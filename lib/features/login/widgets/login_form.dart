@@ -104,7 +104,7 @@ class LoginForm extends StatelessWidget {
                     Map<APICode, Function()> switcher = {
                       APICode.ok: () {
                         return Navigator.pushReplacementNamed(
-                            context, WeekScreen.route);
+                            context, MainScreen.route);
                       },
                       APICode.notfound: () =>
                           _openAlert(context, LoginErrorType.network),

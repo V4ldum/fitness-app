@@ -16,25 +16,36 @@ main() {
 
   test("Initial values are correct", () {
     expect(sut.isLoading, false);
+    expect(sut.dailyProgram, null);
+    expect(sut.selectedIndex, 0);
   });
 
   group("getProgram()", () {
     void arrangeDailyServiceTestingValue() {
-      when(() => service.getProgram()).thenAnswer((_) async => []);
+      when(() => service.getProgram("test")).thenAnswer((_) async => []);
     }
 
     test(
       "getProgram() is called",
       () async {
         arrangeDailyServiceTestingValue();
-        await sut.getProgram();
-        verify(() => service.getProgram()).called(1);
+        await sut.getProgram("test");
+        verify(() => service.getProgram("test")).called(1);
+      },
+    );
+    test(
+      "getProgram() is not called if program has already been queried",
+      () async {
+        arrangeDailyServiceTestingValue();
+        sut.dailyProgram = [];
+        await sut.getProgram("test");
+        verifyNever(() => service.getProgram("test"));
       },
     );
     test("getProgram loads, queries then returns result of the operation",
         () async {
       arrangeDailyServiceTestingValue();
-      final future = sut.getProgram();
+      final future = sut.getProgram("test");
       expect(sut.isLoading, true);
       await future;
       expect(sut.isLoading, false);

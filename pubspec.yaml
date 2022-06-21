@@ -20,6 +20,7 @@ dependencies:
   shared_preferences: ^2.0.13
   app_settings: ^4.1.6
   http: ^0.13.4
+  week_of_year: ^2.0.0
 
 dev_dependencies:
   flutter_test:

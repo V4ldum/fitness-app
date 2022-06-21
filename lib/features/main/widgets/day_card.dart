@@ -1,6 +1,6 @@
 import 'package:fitness_app/config/index.dart';
 import 'package:fitness_app/features/comments/screens/comments_screen.dart';
-import 'package:fitness_app/features/video_player/screens/preview_screen.dart';
+import 'package:fitness_app/features/daily/day_screen.dart';
 import 'package:fitness_app/shared/widgets/separator.dart';
 import 'package:flutter/material.dart';
 
@@ -40,39 +40,45 @@ class DayCard extends StatelessWidget {
                     ? const SizedBox()
                     : CardButton(
                         onPressed: () {
-                          //TODO move to provider?
-                          program.startProgram();
                           Navigator.pushNamed(
                             context,
-                            PreviewScreen.route,
+                            DayScreen.route,
                             arguments: [
-                              program.blocs[0].videoAsset
-                            ], //TODO convertir pour Day
+                              program,
+                            ],
                           );
                         },
                       ),
               ],
             ),
-            program.isRestDay
-                ? const SizedBox()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 5.0),
-                        child: Separator(indent: 8.0),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: GestureDetector(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: program.isRestDay
+                      ? const SizedBox(height: 5)
+                      : const Separator(indent: 8),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: program.isRestDay
+                      ? Text(
+                          program.text.toString(),
+                          style: const TextStyle(
+                            fontFamily: Fonts.primaryRegular,
+                            fontSize: 14.0,
+                          ),
+                        )
+                      : GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(context, CommentsScreen.route);
                           },
                           child: const Comments(),
                         ),
-                      ),
-                    ],
-                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

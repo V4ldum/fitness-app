@@ -12,15 +12,15 @@ import '../widgets/my_bottom_navigation_bar.dart';
 import 'daily_view.dart';
 import 'other_view.dart';
 
-class WeekScreen extends StatelessWidget {
-  static String route = "week";
+class MainScreen extends StatelessWidget {
+  static String route = "main";
 
   final Map<Permission, Widget> currentViewSwitcher = const {
     Permission.Daily: DailyView(),
     Permission.Other: OtherView(),
   };
 
-  const WeekScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,9 @@ class WeekScreen extends StatelessWidget {
             builder: (_, provider, __) {
               return MyBottomNavigationBar(
                 selectedIndex: provider.selectedIndex,
-                onTap: provider.onBottomNavigationChanged,
+                onTap: (int value) {
+                  provider.selectedIndex = value;
+                },
               );
             },
           ),

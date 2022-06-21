@@ -1,4 +1,5 @@
 import 'package:fitness_app/config/strings.dart';
+import 'package:fitness_app/features/app_wide/index.dart';
 import 'package:fitness_app/shared/widgets/error_page/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class _DailyViewState extends State<DailyView> {
       itemCount: data.length,
       itemBuilder: (context, index) {
         return DayCard(
-          program: DailyProgram.fromJson(data[index]),
+          program: data[index],
         );
       },
     );
@@ -53,14 +54,14 @@ class _DailyViewState extends State<DailyView> {
   Widget build(BuildContext context) {
     MainProvider provider = context.read<MainProvider>();
 
-    if (provider.program != null) {
-      return _doneBuilder(provider.program!);
+    if (provider.dailyProgram != null) {
+      return _doneBuilder(provider.dailyProgram!);
     }
     return FutureBuilder(
-      future: provider.getProgram(),
+      future: provider.getProgram(context.read<AppWideProvider>().accessToken!),
       builder: (BuildContext _, AsyncSnapshot<List> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError == true) {
+          if (snapshot.hasError) {
             return _errorBuilder(snapshot.error);
           }
           return _doneBuilder(snapshot.data!);

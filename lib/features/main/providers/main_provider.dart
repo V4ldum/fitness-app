@@ -5,8 +5,8 @@ import '../domain/domain.dart';
 class MainProvider extends ChangeNotifier {
   bool _isLoading = false;
   late final MainRepository _service;
-  int selectedIndex = 0;
-  List? program;
+  int _selectedIndex = 0;
+  List<DailyProgram>? dailyProgram;
 
   MainProvider() {
     _service = MainService();
@@ -16,24 +16,26 @@ class MainProvider extends ChangeNotifier {
     _service = ds;
   }
 
-  get isLoading => _isLoading;
+  bool get isLoading => _isLoading;
+
+  int get selectedIndex => _selectedIndex;
+
+  set selectedIndex(int value) {
+    _selectedIndex = value;
+    notifyListeners();
+  }
 
   void _changeLoadingState() {
     _isLoading = !_isLoading;
     //notifyListeners();
   }
 
-  Future<List> getProgram() async {
-    if (program == null) {
+  Future<List<DailyProgram>> getProgram(String token) async {
+    if (dailyProgram == null) {
       _changeLoadingState();
-      program = await _service.getProgram();
+      dailyProgram = await _service.getProgram(token);
       _changeLoadingState();
     }
-    return program!;
-  }
-
-  void onBottomNavigationChanged(int value) {
-    selectedIndex = value;
-    notifyListeners();
+    return dailyProgram!;
   }
 }

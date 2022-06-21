@@ -1,6 +1,6 @@
 import 'package:fitness_app/config/strings.dart';
 import 'package:fitness_app/features/login/screens/login_screen.dart';
-import 'package:fitness_app/features/main/screens/week_screen.dart';
+import 'package:fitness_app/features/main/screens/main_screen.dart';
 import 'package:fitness_app/shared/big_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class LoadingStartPage extends StatelessWidget {
       body: StartupCaller(
         onInit: () async {
           if (await context.read<AppWideProvider>().authenticate()) {
-            Navigator.pushReplacementNamed(context, WeekScreen.route);
+            Navigator.pushReplacementNamed(context, MainScreen.route);
           } else {
             Navigator.pushReplacementNamed(context, LoginScreen.route);
           }

@@ -19,10 +19,14 @@ class LoginService implements LoginRepository {
     final http.Response response;
 
     try {
-      response = await http.get(Uri.http(Strings.apiHost, Strings.apiAuthPath, {
-        "username": username,
-        "password": password,
-      }));
+      response = await http.get(Uri.http(
+        Strings.apiHost,
+        Strings.apiAuthPath,
+        {
+          "username": username,
+          "password": password,
+        },
+      ));
     } on SocketException {
       // API Down
       return APIResponse<Map<String, Object>>(APICode.notfound, null);
