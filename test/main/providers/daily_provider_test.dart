@@ -1,23 +1,22 @@
-import 'package:fitness_app/features/main/domain/services/main_service.dart';
+import 'package:fitness_app/features/main/domain/services/daily_service.dart';
 import 'package:fitness_app/features/main/providers/providers.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDailyService extends Mock implements MainService {}
+class MockDailyService extends Mock implements DailyService {}
 
 main() {
-  late MainProvider sut;
+  late DailyProvider sut;
   late MockDailyService service;
 
   setUp(() {
     service = MockDailyService();
-    sut = MainProvider.fromService(service);
+    sut = DailyProvider.fromService(service);
   });
 
   test("Initial values are correct", () {
     expect(sut.isLoading, false);
-    expect(sut.dailyProgram, null);
-    expect(sut.selectedIndex, 0);
+    expect(sut.programs, null);
   });
 
   group("getProgram()", () {
@@ -37,7 +36,7 @@ main() {
       "getProgram() is not called if program has already been queried",
       () async {
         arrangeDailyServiceTestingValue();
-        sut.dailyProgram = [];
+        sut.programs = [];
         await sut.getProgram("test");
         verifyNever(() => service.getProgram("test"));
       },

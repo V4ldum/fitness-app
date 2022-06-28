@@ -34,19 +34,21 @@ class BigAvatar extends StatelessWidget {
               child: SizedBox(
                 height: 32,
                 width: 32,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                        const CircleBorder(),
-                      ),
-                      padding: MaterialStateProperty.all(
-                        const EdgeInsets.all(0),
-                      )),
-                  onPressed: onPressEditButton,
-                  child: const Icon(
-                    Icons.edit,
-                    color: Palette.tint1,
-                    size: 19,
+                child: RepaintBoundary(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(
+                          const CircleBorder(),
+                        ),
+                        padding: MaterialStateProperty.all(
+                          const EdgeInsets.all(0),
+                        )),
+                    onPressed: onPressEditButton,
+                    child: const Icon(
+                      Icons.edit,
+                      color: Palette.tint1,
+                      size: 19,
+                    ),
                   ),
                 ),
               ),

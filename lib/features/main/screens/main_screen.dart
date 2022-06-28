@@ -15,12 +15,15 @@ import 'other_view.dart';
 class MainScreen extends StatelessWidget {
   static String route = "main";
 
-  final Map<Permission, Widget> currentViewSwitcher = const {
-    Permission.Daily: DailyView(),
-    Permission.Other: OtherView(),
+  final Map<Permission, Widget> currentViewSwitcher = {
+    Permission.Daily: ChangeNotifierProvider<DailyProvider>(
+      create: (_) => DailyProvider(),
+      child: const DailyView(),
+    ),
+    Permission.Other: const OtherView(),
   };
 
-  const MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,32 +51,28 @@ class MainScreen extends StatelessWidget {
               );
             },
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Consumer<MainProvider>(
-              builder: (_, provider, __) {
-                AppWideProvider appWideProvider =
-                    context.read<AppWideProvider>();
-                Widget? out;
-                try {
-                  out = currentViewSwitcher[appWideProvider
-                      .user?.permissions[provider.selectedIndex]];
-                } on RangeError {
-                  // No access bought
-                  return const ErrorPage(
-                    image: Images.noServiceImage,
-                    title: Strings.noContentErrorHeader,
-                    content: Strings.noContentErrorBody,
+          body: Consumer<MainProvider>(
+            builder: (_, provider, __) {
+              AppWideProvider appWideProvider = context.read<AppWideProvider>();
+              Widget? out;
+              try {
+                out = currentViewSwitcher[
+                    appWideProvider.user?.permissions[provider.selectedIndex]];
+              } on RangeError {
+                // No access bought
+                return const ErrorPage(
+                  image: Images.noServiceImage,
+                  title: Strings.noContentErrorHeader,
+                  content: Strings.noContentErrorBody,
+                );
+              }
+              // Correct page or attempt to bypass logon
+              return out ??
+                  const ErrorPage(
+                    title: Strings.unknownErrorHeader,
+                    content: Strings.unknownErrorBody,
                   );
-                }
-                // Correct page or attempt to bypass logon
-                return out ??
-                    const ErrorPage(
-                      title: Strings.unknownErrorHeader,
-                      content: Strings.unknownErrorBody,
-                    );
-              },
-            ),
+            },
           ),
         ),
       ),

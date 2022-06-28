@@ -5,7 +5,7 @@ import 'package:fitness_app/features/main/domain/domain.dart';
 import 'package:http/http.dart' as http;
 import 'package:week_of_year/date_week_extensions.dart';
 
-class MainService implements MainRepository {
+class DailyService implements DailyRepository {
   @override
   Future<List<DailyProgram>?> getProgram(String token) async {
     List<DailyProgram>? out;

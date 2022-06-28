@@ -32,7 +32,8 @@ class PreviewScreen extends StatelessWidget {
           ),
         ),
         body: ChangeNotifierProvider<VideoPlayerProvider>(
-          create: (context) => VideoPlayerProvider.fromAsset(videoAsset),
+          create: (context) =>
+              VideoPlayerProvider.fromAsset(videoAsset), //TODO network
           builder: (context, _) {
             return FutureBuilder(
               future: context.read<VideoPlayerProvider>().initializeVideoPlayer,

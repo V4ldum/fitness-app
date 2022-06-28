@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 import '../domain/domain.dart';
 
 class LoginProvider extends ChangeNotifier {
-  String _username = "";
-  String _password = "";
+  String username = "";
+  String password = "";
   late final LoginRepository _service;
   bool _isLoading = false;
 
@@ -15,24 +15,6 @@ class LoginProvider extends ChangeNotifier {
 
   LoginProvider.fromService(LoginRepository ls) {
     _service = ls;
-  }
-
-  String get username {
-    return _username;
-  }
-
-  set username(String value) {
-    _username = value;
-    notifyListeners();
-  }
-
-  String get password {
-    return _password;
-  }
-
-  set password(String value) {
-    _password = value;
-    notifyListeners();
   }
 
   get isLoading {
@@ -47,7 +29,7 @@ class LoginProvider extends ChangeNotifier {
   Future<APIResponse<Map<String, Object>>> login() async {
     _changeLoadingState();
     final APIResponse<Map<String, Object>> out =
-        await _service.login(_username, _password);
+        await _service.login(username, password);
     _changeLoadingState();
 
     return out;

@@ -7,5 +7,5 @@ export 'models/exercise_set.dart';
 export 'models/exercise_type.dart';
 export 'models/for_time.dart';
 export 'models/tabata.dart';
-export 'repository/main_repository.dart';
-export 'services/main_service.dart';
+export 'repository/daily_repository.dart';
+export 'services/daily_service.dart';

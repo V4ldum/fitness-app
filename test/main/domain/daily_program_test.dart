@@ -35,7 +35,7 @@ void main() {
       expect(dp.subtitle, "Test");
       expect(dp.blocs.length, 0);
       expect(dp.text, "");
-      expect(dp.isRestDay, false);
+      expect(dp.isRestDay, true);
     });
     test("blocs should be set (no json)", () {
       String jsonString = '{"title": "Test","subtitle": "Test"}';
@@ -45,7 +45,7 @@ void main() {
       expect(dp.subtitle, "Test");
       expect(dp.blocs.length, 0);
       expect(dp.text, "");
-      expect(dp.isRestDay, false);
+      expect(dp.isRestDay, true);
     });
   });
   group("DailyProgram Blocs typing", () {

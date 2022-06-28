@@ -1,15 +1,12 @@
 import 'package:fitness_app/config/index.dart';
 import 'package:fitness_app/features/comments/screens/comments_screen.dart';
-import 'package:fitness_app/features/daily/day_screen.dart';
 import 'package:fitness_app/shared/widgets/separator.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../domain/models/daily_program.dart';
-import 'card_button.dart';
-import 'card_header.dart';
-import 'comments.dart';
+import '../index.dart';
 
-class DayCard extends StatelessWidget {
+class DayCard extends StatefulWidget {
   final DailyProgram program;
 
   const DayCard({
@@ -18,66 +15,74 @@ class DayCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<DayCard> createState() => _DayCardState();
+}
+
+class _DayCardState extends State<DayCard> {
+  double _offset = 0;
+
+  void scrollListener(double offset) {
+    setState(() {
+      _offset = offset;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       color: Palette.tint1,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, left: 15.0),
-                  child: CardHeader(
-                    title: program.title,
-                    subtitle: program.subtitle,
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 15.0, right: 13.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CardHeader(
+                    title: widget.program.title,
+                    subtitle: widget.program.subtitle,
                   ),
-                ),
-                program.isRestDay
-                    ? const SizedBox()
-                    : CardButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            DayScreen.route,
-                            arguments: [
-                              program,
-                            ],
-                          );
-                        },
+                  if (!widget.program.isRestDay)
+                    SmoothIndicator(
+                      offset: _offset,
+                      count: widget.program.blocs.length,
+                      effect: const WormEffect(
+                        activeDotColor: Palette.accent,
+                        dotHeight: 8,
+                        dotWidth: 8,
                       ),
-              ],
+                    ),
+                ],
+              ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
-                  child: program.isRestDay
-                      ? const SizedBox(height: 5)
-                      : const Separator(indent: 8),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: program.isRestDay
-                      ? Text(
-                          program.text.toString(),
-                          style: const TextStyle(
-                            fontFamily: Fonts.primaryRegular,
-                            fontSize: 14.0,
-                          ),
-                        )
-                      : GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, CommentsScreen.route);
-                          },
-                          child: const Comments(),
-                        ),
-                ),
-              ],
+            if (!widget.program.isRestDay) const Separator(indent: 8),
+            if (!widget.program.isRestDay)
+              CardCarousel(
+                blocs: widget.program.blocs,
+                scrollListener: scrollListener,
+              ),
+            const Separator(indent: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: widget.program.isRestDay
+                  ? Text(
+                      widget.program.text.toString(),
+                      style: const TextStyle(
+                        fontFamily: Fonts.primaryRegular,
+                        fontSize: 14.0,
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, CommentsScreen.route);
+                      },
+                      child: const Comments(),
+                    ),
             ),
           ],
         ),

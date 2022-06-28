@@ -77,7 +77,9 @@ class ProfileScreen extends StatelessWidget {
                         if (provider.isLoadingProfile) {
                           return const CircularProgressIndicator();
                         }
-                        return const Settings();
+                        return const RepaintBoundary(
+                          child: Settings(),
+                        );
                       },
                     ),
                     const SizedBox(height: 20.0),

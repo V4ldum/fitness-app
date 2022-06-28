@@ -27,24 +27,26 @@ class _DailyViewState extends State<DailyView> {
   }
 
   Widget _waitingBuilder() {
-    return ListView(
-      children: const [
-        ShimmerDayCard(),
-        ShimmerDayCard(),
-        ShimmerDayCard(),
-        ShimmerDayCard(),
-        ShimmerDayCard(),
-      ],
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 6.0),
+          child: ShimmerDayCard(),
+        );
+      },
     );
   }
 
   Widget _doneBuilder(List data) {
     return ListView.builder(
-      physics: const BouncingScrollPhysics(),
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return DayCard(
-          program: data[index],
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: DayCard(
+            program: data[index],
+          ),
         );
       },
     );
@@ -52,10 +54,10 @@ class _DailyViewState extends State<DailyView> {
 
   @override
   Widget build(BuildContext context) {
-    MainProvider provider = context.read<MainProvider>();
+    DailyProvider provider = context.read<DailyProvider>();
 
-    if (provider.dailyProgram != null) {
-      return _doneBuilder(provider.dailyProgram!);
+    if (provider.programs != null) {
+      return _doneBuilder(provider.programs!);
     }
     return FutureBuilder(
       future: provider.getProgram(context.read<AppWideProvider>().accessToken!),

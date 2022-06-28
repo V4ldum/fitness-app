@@ -11,10 +11,9 @@ class DailyProgram {
   String subtitle;
   List<Bloc> blocs;
   String text;
-  int _currentBloc = 1; //TODO state ?
 
   bool get isRestDay {
-    return text != "";
+    return blocs.isEmpty;
   }
 
   DailyProgram({
@@ -47,17 +46,5 @@ class DailyProgram {
       blocs: blocs,
       text: json["text"] ?? "",
     );
-  }
-
-  void startProgram() {
-    _currentBloc = 1; //TODO move to provider
-  }
-
-  void nextBloc() {
-    _currentBloc++; //TODO move to provider
-  }
-
-  Bloc getCurrentBloc() {
-    return blocs[_currentBloc]; //TODO move to provider
   }
 }
