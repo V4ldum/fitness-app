@@ -1,10 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/video_player_provider.dart';
-import 'video_player_backward_button.dart';
-import 'video_player_forward_button.dart';
-import 'video_player_play_pause_button.dart';
+import '../index.dart';
 
 class VideoPlayerButtons extends StatelessWidget {
   const VideoPlayerButtons({Key? key}) : super(key: key);

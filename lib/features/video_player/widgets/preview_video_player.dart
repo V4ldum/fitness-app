@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/video_player_provider.dart';
-import 'video_player_content.dart';
-import 'video_player_hub.dart';
-import 'video_player_replay_button.dart';
+import '../index.dart';
 
 class PreviewVideoPlayer extends StatelessWidget {
   const PreviewVideoPlayer({
@@ -84,7 +81,7 @@ class PreviewVideoPlayer extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.2,
                   height: MediaQuery.of(context).size.height - 130,
                   child: GestureDetector(

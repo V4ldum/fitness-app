@@ -65,7 +65,7 @@ class Strings {
   static const String apiRefreshPath = "/login/refesh";
   static const String apiPicturePath = "/user/picture";
   static const String apiDailyPath = "/daily";
-  static const String apiDailyAssetsPath = "/daily/asset";
+  static const String apiDailyAssetsPath = "/daily/video.mp4";
 
   //Hero
   static const String heroBigLogo = "big_logo";

@@ -1,4 +1,5 @@
 import 'package:fitness_app/features/video_player/domain/domain.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:video_player/video_player.dart';
 
@@ -51,12 +52,14 @@ class VideoPlayerProvider extends ChangeNotifier {
   }
 
   void playpause() {
-    if (isDonePlaying) {
+    if (!isDonePlaying) {
       if (isPlaying) {
         pause();
       } else {
         play();
       }
+    } else {
+      replay();
     }
   }
 

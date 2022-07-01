@@ -27,53 +27,51 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ChangeNotifierProvider<MainProvider>(
-        create: (_) => MainProvider(),
-        child: Scaffold(
-          appBar: MyAppBar(
-            title: Strings.appBarWeek,
-            leading: const SmallLogo(),
-            trailing: AppBarButton(
-              icon: Icons.people_alt,
-              onPressed: () {
-                Navigator.pushNamed(context, ProfileScreen.route);
+    return ChangeNotifierProvider<MainProvider>(
+      create: (_) => MainProvider(),
+      child: Scaffold(
+        appBar: MyAppBar(
+          title: Strings.appBarWeek,
+          leading: const SmallLogo(),
+          trailing: AppBarButton(
+            icon: Icons.people_alt,
+            onPressed: () {
+              Navigator.pushNamed(context, ProfileScreen.route);
+            },
+          ),
+        ),
+        bottomNavigationBar: Consumer<MainProvider>(
+          builder: (_, provider, __) {
+            return MyBottomNavigationBar(
+              selectedIndex: provider.selectedIndex,
+              onTap: (int value) {
+                provider.selectedIndex = value;
               },
-            ),
-          ),
-          bottomNavigationBar: Consumer<MainProvider>(
-            builder: (_, provider, __) {
-              return MyBottomNavigationBar(
-                selectedIndex: provider.selectedIndex,
-                onTap: (int value) {
-                  provider.selectedIndex = value;
-                },
+            );
+          },
+        ),
+        body: Consumer<MainProvider>(
+          builder: (_, provider, __) {
+            AppWideProvider appWideProvider = context.read<AppWideProvider>();
+            Widget? out;
+            try {
+              out = currentViewSwitcher[
+                  appWideProvider.user?.permissions[provider.selectedIndex]];
+            } on RangeError {
+              // No access bought
+              return const ErrorPage(
+                image: Images.noServiceImage,
+                title: Strings.noContentErrorHeader,
+                content: Strings.noContentErrorBody,
               );
-            },
-          ),
-          body: Consumer<MainProvider>(
-            builder: (_, provider, __) {
-              AppWideProvider appWideProvider = context.read<AppWideProvider>();
-              Widget? out;
-              try {
-                out = currentViewSwitcher[
-                    appWideProvider.user?.permissions[provider.selectedIndex]];
-              } on RangeError {
-                // No access bought
-                return const ErrorPage(
-                  image: Images.noServiceImage,
-                  title: Strings.noContentErrorHeader,
-                  content: Strings.noContentErrorBody,
+            }
+            // Correct page or attempt to bypass logon
+            return out ??
+                const ErrorPage(
+                  title: Strings.unknownErrorHeader,
+                  content: Strings.unknownErrorBody,
                 );
-              }
-              // Correct page or attempt to bypass logon
-              return out ??
-                  const ErrorPage(
-                    title: Strings.unknownErrorHeader,
-                    content: Strings.unknownErrorBody,
-                  );
-            },
-          ),
+          },
         ),
       ),
     );

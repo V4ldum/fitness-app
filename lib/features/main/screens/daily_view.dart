@@ -40,6 +40,7 @@ class _DailyViewState extends State<DailyView> {
 
   Widget _doneBuilder(List data) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: data.length,
       itemBuilder: (context, index) {
         return Padding(

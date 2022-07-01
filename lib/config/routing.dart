@@ -17,7 +17,7 @@ class Routing {
     ProfileScreen.route: (context) => const ProfileScreen(),
     CommentsScreen.route: (context) => const CommentsScreen(),
     PreviewScreen.route: (context) => PreviewScreen(
-          videoAsset: ModalRoute.of(context)?.settings.arguments! as String,
+          videoUrl: ModalRoute.of(context)?.settings.arguments! as String,
         ),
     ClockScreen.route: (context) => const ClockScreen(),
   };
