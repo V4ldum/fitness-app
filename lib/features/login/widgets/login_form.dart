@@ -98,7 +98,7 @@ class LoginForm extends StatelessWidget {
               Expanded(
                 child: FormButton(
                   text: Strings.logInButton,
-                  onPressed: () {
+                  onPressed: () async {
                     FocusManager.instance.primaryFocus?.unfocus();
 
                     Map<APICode, Function()> switcher = {
@@ -112,23 +112,22 @@ class LoginForm extends StatelessWidget {
                           _openAlert(context, LoginErrorType.password),
                     };
 
-                    context.read<LoginProvider>().login().then((response) {
-                      Function()? switcherOutput =
-                          switcher[response.statusCode];
+                    var awpProvider = context.read<AppWideProvider>();
+                    var response = await context.read<LoginProvider>().login();
+                    Function()? switcherOutput = switcher[response.statusCode];
 
-                      context.read<AppWideProvider>().user =
-                          response.content?["user"] as User?;
-                      context.read<AppWideProvider>().accessToken =
-                          response.content?["access_token"] as String?;
-                      context.read<AppWideProvider>().refreshToken =
-                          response.content?["refresh_token"] as String?;
+                    awpProvider.user = response.content?["user"] as User?;
+                    awpProvider.accessToken =
+                        response.content?["access_token"] as String?;
+                    awpProvider.refreshToken =
+                        response.content?["refresh_token"] as String?;
 
-                      if (switcherOutput != null) {
-                        switcherOutput();
-                      } else {
-                        _openAlert(context, LoginErrorType.unknown);
-                      }
-                    });
+                    if (switcherOutput != null) {
+                      switcherOutput();
+                    } else {
+                      // ignore: use_build_context_synchronously
+                      _openAlert(context, LoginErrorType.unknown);
+                    }
                   },
                 ),
               ),

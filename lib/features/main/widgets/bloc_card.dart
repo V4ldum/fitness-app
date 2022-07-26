@@ -1,5 +1,5 @@
 import 'package:fitness_app/config/colors.dart';
-import 'package:fitness_app/features/chronometer/screens/clock_screen.dart';
+import 'package:fitness_app/features/stopwatch/screens/main_clock_screen.dart';
 import 'package:fitness_app/features/video_player/screens/preview_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +97,11 @@ class BlocCard extends StatelessWidget {
                       size: 20,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, ClockScreen.route);
+                      Navigator.pushNamed(
+                        context,
+                        MainClockScreen.route,
+                        arguments: bloc,
+                      );
                     },
                   ),
                 ],

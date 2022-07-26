@@ -13,14 +13,14 @@ import 'daily_view.dart';
 import 'other_view.dart';
 
 class MainScreen extends StatelessWidget {
-  static String route = "main";
+  static const String route = "main";
 
-  final Map<Permission, Widget> currentViewSwitcher = {
-    Permission.Daily: ChangeNotifierProvider<DailyProvider>(
-      create: (_) => DailyProvider(),
-      child: const DailyView(),
-    ),
-    Permission.Other: const OtherView(),
+  final Map<Permission, Widget Function()> _currentViewSwitcher = {
+    Permission.Daily: () => ChangeNotifierProvider<DailyProvider>(
+          create: (_) => DailyProvider(),
+          child: const DailyView(),
+        ),
+    Permission.Other: () => const OtherView(),
   };
 
   MainScreen({Key? key}) : super(key: key);
@@ -55,8 +55,9 @@ class MainScreen extends StatelessWidget {
             AppWideProvider appWideProvider = context.read<AppWideProvider>();
             Widget? out;
             try {
-              out = currentViewSwitcher[
-                  appWideProvider.user?.permissions[provider.selectedIndex]];
+              out = _currentViewSwitcher[
+                      appWideProvider.user?.permissions[provider.selectedIndex]]
+                  ?.call();
             } on RangeError {
               // No access bought
               return const ErrorPage(

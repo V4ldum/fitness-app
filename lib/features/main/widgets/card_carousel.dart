@@ -16,13 +16,23 @@ class CardCarousel extends StatelessWidget {
   }
 
   void _scrollListener() {
-    // controller.position.maxscrollextent = total width of carousel including out of screen elements
-    // unitOffsef = offset to go to the following page
+    // The current offset in pixels
+    double offset = _controller.offset;
+
+    // To fix some potential quirks with bouncing scroll like on iOS
+    if (offset < 0) {
+      offset = 0;
+    } else if (offset > _controller.position.maxScrollExtent) {
+      offset = _controller.position.maxScrollExtent;
+    }
+
+    // controller.position.maxScrollExtent = total width of carousel including out of screen elements
+    // unitOffset = offset to go to the following page
     double unitOffset =
         _controller.position.maxScrollExtent / (blocs.length - 1);
 
     // this is the index of the current page
-    double index = _controller.offset / unitOffset;
+    double index = offset / unitOffset;
 
     if (scrollListener != null) scrollListener!(index);
   }

@@ -7,7 +7,7 @@ import '../providers/login_provider.dart';
 import '../widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
-  static String route = "login";
+  static const String route = "login";
 
   const LoginScreen({Key? key}) : super(key: key);
 

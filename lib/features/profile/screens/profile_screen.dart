@@ -11,7 +11,7 @@ import '../providers/profile_provider.dart';
 import '../widgets/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
-  static String route = "profile";
+  static const String route = "profile";
 
   const ProfileScreen({Key? key}) : super(key: key);
 

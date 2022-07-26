@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../index.dart';
 
 class PreviewScreen extends StatelessWidget {
-  static String route = "preview";
+  static const String route = "preview";
 
   final String videoUrl;
 

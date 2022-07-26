@@ -6,4 +6,5 @@ class Images {
   static const errorImage = "assets/fatigue.png";
   static const noServiceImage = "assets/no_service.png";
   static const profilePicturePlaceholder = "assets/small_cat.png";
+  static const stopwatch = "assets/stopwatch.png";
 }

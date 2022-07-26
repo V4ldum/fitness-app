@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:fitness_app/features/app_wide/domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +6,7 @@ class AppWideProvider extends ChangeNotifier {
   String? refreshToken;
   late final AppWideRepository _service;
   User? user;
+  Map<String, dynamic>? savedWorkout;
 
   AppWideProvider() {
     _service = AppWideService();
@@ -90,7 +89,7 @@ class AppWideProvider extends ChangeNotifier {
 
   Future<void> _loadAppData() async {
     //TODO query data?
-    print("query data");
+    debugPrint("query data");
   }
 
   void deleteTokens() {
@@ -99,5 +98,10 @@ class AppWideProvider extends ChangeNotifier {
       accessToken = null;
       refreshToken = null;
     }
+  }
+
+  void saveWorkout(Map<String, dynamic> workout) {
+    debugPrint("Saved Workout");
+    savedWorkout = workout;
   }
 }

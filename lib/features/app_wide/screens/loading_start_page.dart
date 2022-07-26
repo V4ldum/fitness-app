@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../index.dart';
 
 class LoadingStartPage extends StatelessWidget {
-  static String route = "app_loading";
+  static const String route = "app_loading";
 
   const LoadingStartPage({Key? key}) : super(key: key);
 

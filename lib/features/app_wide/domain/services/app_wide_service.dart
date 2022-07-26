@@ -82,8 +82,8 @@ class AppWideService implements AppWideRepository {
               "refresh_token": jsonDecode(response.body)["refresh_token"],
             },
           ),
-      401: () => APIResponse<User>(APICode.unauthorized, null),
-      404: () => APIResponse<User>(APICode.notfound, null),
+      401: () => APIResponse<Map<String, String>>(APICode.unauthorized, {}),
+      404: () => APIResponse<Map<String, String>>(APICode.notfound, {}),
     };
 
     return switcher[response.statusCode]!();

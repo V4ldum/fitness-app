@@ -1,9 +1,9 @@
 import 'package:fitness_app/features/app_wide/screens/loading_start_page.dart';
-import 'package:fitness_app/features/chronometer/screens/clock_screen.dart';
 import 'package:fitness_app/features/comments/screens/comments_screen.dart';
 import 'package:fitness_app/features/login/screens/login_screen.dart';
 import 'package:fitness_app/features/main/index.dart';
 import 'package:fitness_app/features/profile/screens/profile_screen.dart';
+import 'package:fitness_app/features/stopwatch/screens/main_clock_screen.dart';
 import 'package:fitness_app/features/video_player/screens/preview_screen.dart';
 import 'package:flutter/widgets.dart';
 
@@ -19,7 +19,9 @@ class Routing {
     PreviewScreen.route: (context) => PreviewScreen(
           videoUrl: ModalRoute.of(context)?.settings.arguments! as String,
         ),
-    ClockScreen.route: (context) => const ClockScreen(),
+    MainClockScreen.route: (context) => MainClockScreen(
+          bloc: ModalRoute.of(context)?.settings.arguments as Bloc,
+        ),
   };
   static String initialRoute = LoadingStartPage.route;
 }

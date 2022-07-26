@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
-  final Map<Permission, IconData> _iconSwitcher = const {
-    Permission.Daily: Icons.lock_clock,
-    Permission.Other: Icons.question_mark,
+  final Map<Permission, IconData Function()> _iconSwitcher = {
+    Permission.Daily: () => Icons.lock_clock,
+    Permission.Other: () => Icons.question_mark,
   };
 
   final int selectedIndex;
   final Function(int)? onTap;
 
-  const MyBottomNavigationBar({
+  MyBottomNavigationBar({
     Key? key,
     this.selectedIndex = 0,
     this.onTap,
@@ -35,7 +35,7 @@ class MyBottomNavigationBar extends StatelessWidget {
         for (var item in user.permissions)
           BottomNavigationBarItem(
             label: describeEnum(item),
-            icon: Icon(_iconSwitcher[item] ?? Icons.question_mark),
+            icon: Icon(_iconSwitcher[item]?.call() ?? Icons.question_mark),
           ),
       ],
     );
