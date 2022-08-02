@@ -2,7 +2,7 @@ import 'package:fitness_app/config/index.dart';
 import 'package:fitness_app/shared/widgets/separator.dart';
 import 'package:flutter/material.dart';
 
-import 'shimmer_bar.dart';
+import '../../../shared/widgets/shimmer_bar.dart';
 
 class ShimmerDayCard extends StatelessWidget {
   const ShimmerDayCard({Key? key}) : super(key: key);

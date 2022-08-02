@@ -11,6 +11,7 @@ class DailyProgram {
   String subtitle;
   List<Bloc> blocs;
   String text;
+  int comments;
 
   bool get isRestDay {
     return blocs.isEmpty;
@@ -21,6 +22,7 @@ class DailyProgram {
     required this.subtitle,
     this.blocs = const [],
     this.text = "",
+    required this.comments,
   });
 
   factory DailyProgram.fromJson(Map<String, dynamic> json) {
@@ -45,6 +47,7 @@ class DailyProgram {
       subtitle: json["subtitle"] ?? "",
       blocs: blocs,
       text: json["text"] ?? "",
+      comments: json["nb_comments"] ?? 0,
     );
   }
 }

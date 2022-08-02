@@ -1,5 +1,5 @@
 import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/features/app_wide/index.dart';
+import 'package:fitness_app/features/app_wide/providers/app_wide_provider.dart';
 import 'package:fitness_app/shared/widgets/app_bar/app_bar.dart';
 import 'package:fitness_app/shared/widgets/error_page/error_page.dart';
 import 'package:flutter/material.dart';
@@ -7,23 +7,23 @@ import 'package:provider/provider.dart';
 
 import '../index.dart';
 
-class CommentsScreen extends StatefulWidget {
-  static const String route = "comments";
+class RepliesScreen extends StatefulWidget {
+  static const route = "replies";
 
+  final int commentId;
   final int number;
-  final int day;
 
-  const CommentsScreen({
+  const RepliesScreen({
     Key? key,
+    required this.commentId,
     required this.number,
-    required this.day,
   }) : super(key: key);
 
   @override
-  State<CommentsScreen> createState() => _CommentsScreenState();
+  State<RepliesScreen> createState() => _RepliesScreenState();
 }
 
-class _CommentsScreenState extends State<CommentsScreen> {
+class _RepliesScreenState extends State<RepliesScreen> {
   Widget _errorBuilder(error) {
     return ErrorPage(
       title: Strings.connectionErrorHeader,
@@ -39,8 +39,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
     return const ShimmerMessageList();
   }
 
-  Widget _doneBuilder(List<Comment> elements) {
-    return MessagesList<Comment>(
+  Widget _doneBuilder(List<Reply> elements) {
+    return MessagesList<Reply>(
       elements: elements,
     );
   }
@@ -49,7 +49,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: "${widget.number} ${Strings.appBarComments}",
+        title: "${widget.number} ${Strings.appBarReplies}",
         leading: AppBarButton(
           icon: Icons.arrow_back,
           onPressed: () {
@@ -57,8 +57,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
           },
         ),
       ),
-      body: ChangeNotifierProvider<CommentsProvider>(
-        create: (_) => CommentsProvider(),
+      body: ChangeNotifierProvider<RepliesProvider>(
+        create: (_) => RepliesProvider(),
         builder: (newContext, child) {
           return Column(
             children: [
@@ -67,11 +67,10 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: widget.number != 0
                       ? FutureBuilder(
-                          future: newContext
-                              .read<CommentsProvider>()
-                              .getComments(
-                                  context.read<AppWideProvider>().accessToken!,
-                                  widget.day),
+                          future: newContext.read<RepliesProvider>().getReplies(
+                                context.read<AppWideProvider>().accessToken!,
+                                widget.commentId,
+                              ),
                           builder: (BuildContext _, AsyncSnapshot snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.done) {
@@ -79,7 +78,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                 return _errorBuilder(snapshot.error);
                               }
                               return _doneBuilder(
-                                  snapshot.data! as List<Comment>);
+                                  snapshot.data! as List<Reply>);
                             }
                             return _waitingBuilder();
                           },
@@ -91,7 +90,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         ),
                 ),
               ),
-              child!,
+              child!
             ],
           );
         },

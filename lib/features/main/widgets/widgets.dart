@@ -5,5 +5,4 @@ export 'card_subtitle.dart';
 export 'card_title.dart';
 export 'comments.dart';
 export 'day_card.dart';
-export 'shimmer_bar.dart';
 export 'shimmer_day_card.dart';

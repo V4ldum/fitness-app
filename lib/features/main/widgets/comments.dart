@@ -9,7 +9,7 @@ class Comments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "$number commentaires",
+      "$number commentaire${number > 1 ? "s" : ""}",
       style: const TextStyle(
         color: Palette.accent,
         fontFamily: Fonts.primarySemiBold,

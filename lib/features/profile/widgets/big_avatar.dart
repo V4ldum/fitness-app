@@ -25,6 +25,9 @@ class BigAvatar extends StatelessWidget {
             radius: 97.0,
             backgroundImage: const AssetImage(Images.profilePicturePlaceholder),
             foregroundImage: NetworkImage(image),
+            onForegroundImageError: (_, __) {
+              debugPrint("[x] Profile Avatar: Error");
+            },
           ),
         ),
         if (onPressEditButton != null)

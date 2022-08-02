@@ -5,8 +5,11 @@ class ShimmerBar extends StatelessWidget {
   final double width;
   final double height;
 
-  const ShimmerBar({Key? key, required this.width, required this.height})
-      : super(key: key);
+  const ShimmerBar({
+    Key? key,
+    required this.width,
+    required this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,7 @@ class Palette {
 
   static const Color primary = Color(0xFF242424);
   static const Color accent = Color(0xFFCD994C);
+  static const Color accent2 = Color(0xFFA47A3D);
   static const Color tint1 = Color(0xFF3A3A3A);
   static const Color tint3 = Color(0xFF666666);
   static const Color shade1 = Color(0xFF202020);

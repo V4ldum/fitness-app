@@ -15,6 +15,7 @@ void main() {
       expect(dp.blocs.length, 0);
       expect(dp.subtitle, "Test");
       expect(dp.title, "Test");
+      expect(dp.comments, 0);
     });
     test("normal case (not rest day)", () {
       String jsonString =
@@ -26,6 +27,7 @@ void main() {
       expect(dp.blocs.length, 1);
       expect(dp.text, "");
       expect(dp.isRestDay, false);
+      expect(dp.comments, 0);
     });
     test("blocs should be set", () {
       String jsonString = '{"title": "Test","subtitle": "Test","blocs": []}';
@@ -36,6 +38,7 @@ void main() {
       expect(dp.blocs.length, 0);
       expect(dp.text, "");
       expect(dp.isRestDay, true);
+      expect(dp.comments, 0);
     });
     test("blocs should be set (no json)", () {
       String jsonString = '{"title": "Test","subtitle": "Test"}';
@@ -46,6 +49,19 @@ void main() {
       expect(dp.blocs.length, 0);
       expect(dp.text, "");
       expect(dp.isRestDay, true);
+      expect(dp.comments, 0);
+    });
+    test("number of comments should not be 0", () {
+      String jsonString =
+          '{"title": "Test","subtitle": "Test", "nb_comments":1}';
+      DailyProgram dp = DailyProgram.fromJson(json.decode(jsonString));
+
+      expect(dp.title, "Test");
+      expect(dp.subtitle, "Test");
+      expect(dp.blocs.length, 0);
+      expect(dp.text, "");
+      expect(dp.isRestDay, true);
+      expect(dp.comments, 1);
     });
   });
   group("DailyProgram Blocs typing", () {

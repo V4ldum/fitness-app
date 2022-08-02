@@ -47,6 +47,7 @@ class _DailyViewState extends State<DailyView> {
           padding: const EdgeInsets.symmetric(vertical: 6.0),
           child: DayCard(
             program: data[index],
+            day: index,
           ),
         );
       },

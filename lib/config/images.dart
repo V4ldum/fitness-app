@@ -7,4 +7,5 @@ class Images {
   static const noServiceImage = "assets/no_service.png";
   static const profilePicturePlaceholder = "assets/small_cat.png";
   static const stopwatch = "assets/stopwatch.png";
+  static const comment = "assets/comment.png";
 }

@@ -20,6 +20,9 @@ class Strings {
   static const String noContentErrorHeader = "Il n'y a rien par ici";
   static const String noContentErrorBody =
       "Tu n'as accès à aucun service. Abonne-toi pour pouvoir y accéder.";
+  static const String noCommentErrorHeader = "Aucun commentaire";
+  static const String noCommentErrorBody =
+      "Il n'y a encore rien ici. Soit le premier à commenter !";
 
   static const String refreshButton = "Rafraichir";
   static const String loginAlertButton = "OK";
@@ -35,6 +38,8 @@ class Strings {
   static const String appBarTabata = "Tabata";
   static const String appBarUnknownType = "Type inconnu";
   static const String appBarError = "Erreur";
+  static const String appBarReplies = "réponses";
+  static const String appBarComments = "commentaires";
 
   //Login
   static const String loginPageTitle = "Connecte toi";
@@ -67,13 +72,17 @@ class Strings {
   static const String isMutedKey = "muted";
 
   //API
+  static const String apiProtocol = "http://";
   static const String apiHost = "192.168.1.20:8000";
   static const String apiAuthPath = "/login/auth";
   static const String apiAccessPath = "/login/access";
   static const String apiRefreshPath = "/login/refesh";
-  static const String apiPicturePath = "/user/picture";
+  static const String apiUserPath = "/user";
+  static const String apiPicturePath = "/picture";
   static const String apiDailyPath = "/daily";
   static const String apiDailyAssetsPath = "/daily/video.mp4";
+  static const String apiCommentsPath = "/comments";
+  static const String apiRepliesPath = "/replies";
 
   //Stopwatch
   static const String finishedWorkoutLabel = "Fin";
@@ -111,6 +120,11 @@ class Strings {
   static const String totalElapsedKey = "totalElapsedSinceIncrement";
   static const String workoutBackupKey = "workout";
   static const String idKey = "id";
+
+  //Comments
+  static const String sendMessageHint = "Envoyer un message";
+  static const String copyTextButton = "Copier le texte";
+  static const String replyTextButton = "Répondre";
 
   //Hero
   static const String heroBigLogo = "big_logo";

@@ -1,6 +1,5 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:fitness_app/config/index.dart';
-import 'package:fitness_app/shared/helpers/network.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,7 +13,6 @@ class ProfileService implements ProfileRepository {
 
   @override
   Future<bool> openMyAccount() async {
-    await Network.emulate();
     return await launchUrl(
         Uri.https(Strings.myAccountHost, Strings.myAccountPath));
   }

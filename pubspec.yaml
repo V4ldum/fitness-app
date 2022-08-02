@@ -23,6 +23,8 @@ dependencies:
   week_of_year: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
   audioplayers: ^1.0.1
+  grouped_list: ^5.1.2
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

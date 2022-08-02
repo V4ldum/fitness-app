@@ -8,10 +8,12 @@ import '../index.dart';
 
 class DayCard extends StatefulWidget {
   final DailyProgram program;
+  final int day;
 
   const DayCard({
     Key? key,
     required this.program,
+    required this.day,
   }) : super(key: key);
 
   @override
@@ -79,9 +81,16 @@ class _DayCardState extends State<DayCard> {
                     )
                   : GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, CommentsScreen.route);
+                        Navigator.pushNamed(
+                          context,
+                          CommentsScreen.route,
+                          arguments: {
+                            "day": widget.day,
+                            "number": widget.program.comments,
+                          },
+                        );
                       },
-                      child: const Comments(),
+                      child: Comments(number: widget.program.comments),
                     ),
             ),
           ],

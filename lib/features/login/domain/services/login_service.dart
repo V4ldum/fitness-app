@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:fitness_app/config/strings.dart';
 import 'package:fitness_app/features/app_wide/domain/domain.dart';
-import 'package:fitness_app/shared/helpers/network.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -52,14 +51,12 @@ class LoginService implements LoginRepository {
 
   @override
   Future<bool> openForgottenPasswordPage() async {
-    await Network.emulate();
     return await launchUrl(Uri.https(
         Strings.forgottenPasswordHost, Strings.forgottenPasswordPath));
   }
 
   @override
   Future<bool> openRegistrationPage() async {
-    await Network.emulate();
     return await launchUrl(
         Uri.https(Strings.createAccountHost, Strings.createAccountPath));
   }

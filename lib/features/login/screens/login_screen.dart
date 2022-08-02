@@ -1,5 +1,5 @@
 import 'package:fitness_app/config/strings.dart';
-import 'package:fitness_app/shared/big_logo.dart';
+import 'package:fitness_app/shared/widgets/big_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -18,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
       children: [
         BigAvatar(
           image:
-              "http://${Strings.apiHost}${Strings.apiPicturePath}?token=${context.read<AppWideProvider>().accessToken}",
+              "http://${Strings.apiHost}${Strings.apiUserPath}${Strings.apiPicturePath}?token=${context.read<AppWideProvider>().accessToken}",
           onPressEditButton: () {
             context.read<ProfileProvider>().updateImage();
           },
