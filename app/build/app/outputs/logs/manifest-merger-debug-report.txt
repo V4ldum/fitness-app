@@ -1,0 +1,205 @@
+-- Merging decision tree log ---
+application
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:3:4-33:19
+MERGED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/david/.gradle/caches/transforms-2/files-2.1/b13cb3c74219a3127a6ac6916e4b87cf/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/david/.gradle/caches/transforms-2/files-2.1/b13cb3c74219a3127a6ac6916e4b87cf/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:24:18-86
+	android:name
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+manifest
+ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+MERGED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+MERGED from [:shared_preferences_android] /Users/david/Documents/Projets/fitness-app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:modal_progress_hud_nsn] /Users/david/Documents/Projets/fitness-app/build/modal_progress_hud_nsn/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:integration_test] /Users/david/Documents/Projets/fitness-app/build/integration_test/intermediates/library_manifest/debug/AndroidManifest.xml:7:1-12:12
+MERGED from [:audioplayers_android] /Users/david/Documents/Projets/fitness-app/build/audioplayers_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:app_settings] /Users/david/Documents/Projets/fitness-app/build/app_settings/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:path_provider_android] /Users/david/Documents/Projets/fitness-app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:video_player_android] /Users/david/Documents/Projets/fitness-app/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b0dbf021d6bb49d4eec855d0953dbc57/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/a9c0fcf7559185da45955bca5e2b3be5/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.test:rules:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b532e5cd0860b6b21b2987df2bef0bd4/rules-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test.espresso:espresso-core:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9888a6a44fd40a4649926f8580904143/espresso-core-3.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test:runner:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/fff8974b7a213eb0cdc33e07fcf3d83b/runner-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/6ef940fde7b61fe8020ea2453850ed92/jetified-exoplayer-hls-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/2358f96540ced770baffe7f2169b3eb1/jetified-exoplayer-dash-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f6a2fe167d5e93ab0219ad6b3f8dfec3/jetified-exoplayer-smoothstreaming-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/e0b83362804f13afbe404a2dc58a71f2/jetified-exoplayer-core-2.17.1/AndroidManifest.xml:17:1-26:12
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f477930cddfad1bf92d63a2055b408c5/jetified-exoplayer-datasource-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a62808ce0edd83bc217d0634a44cecfd/jetified-exoplayer-extractor-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a2cee72edee2f2c146c19732402c0414/jetified-exoplayer-decoder-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/4b8f44c27baa4ed64cae5b5edc39b478/jetified-exoplayer-database-2.17.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/9e7d0918840fb2a76430d96eb73b7770/jetified-exoplayer-common-2.17.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/0f5f6c3fb851664822af6315c3716990/jetified-core-ktx-1.7.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9905b82832c2400a759761b772003ff9/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/621cbeaf7781517e70fe64ae699a6053/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test:monitor:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/39950d30dcad3d40bad2991e2c768e09/monitor-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d47b73d84a1fc0bbacbb05e152e56e7/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/2933de7aeafb30da2267ac11f74f1b32/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/4d8a8cf5bfaf96c93561a6201954a8f8/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/5316ff5504e9582f145ba68812649340/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/david/.gradle/caches/transforms-2/files-2.1/b13cb3c74219a3127a6ac6916e4b87cf/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/david/.gradle/caches/transforms-2/files-2.1/987a2744b1f38e4ea84643439148672c/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d3709b10ea095573ff082d4e794a165/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ef0702c213bf1e427b3c0444309e541b/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/aec4af671d804af6fdd44e335f2e6b2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/a6095a02a533b437e1b9609f833b2015/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/91adbb8bcba973e7eb04e5231da1ba68/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/41763c445d5f125faa3cd04f0bd88a91/espresso-idling-resource-3.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b08850f8822cbb1fe6b8e9e57c227b41/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:2:5-38
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:34:5-66
+MERGED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:34:5-66
+MERGED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:34:5-66
+	android:name
+		ADDED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml:34:22-64
+uses-sdk
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences_android] /Users/david/Documents/Projets/fitness-app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/david/Documents/Projets/fitness-app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:modal_progress_hud_nsn] /Users/david/Documents/Projets/fitness-app/build/modal_progress_hud_nsn/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:modal_progress_hud_nsn] /Users/david/Documents/Projets/fitness-app/build/modal_progress_hud_nsn/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:integration_test] /Users/david/Documents/Projets/fitness-app/build/integration_test/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-44
+MERGED from [:integration_test] /Users/david/Documents/Projets/fitness-app/build/integration_test/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-44
+MERGED from [:audioplayers_android] /Users/david/Documents/Projets/fitness-app/build/audioplayers_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-44
+MERGED from [:audioplayers_android] /Users/david/Documents/Projets/fitness-app/build/audioplayers_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-44
+MERGED from [:app_settings] /Users/david/Documents/Projets/fitness-app/build/app_settings/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:app_settings] /Users/david/Documents/Projets/fitness-app/build/app_settings/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/david/Documents/Projets/fitness-app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/david/Documents/Projets/fitness-app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:video_player_android] /Users/david/Documents/Projets/fitness-app/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:video_player_android] /Users/david/Documents/Projets/fitness-app/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b0dbf021d6bb49d4eec855d0953dbc57/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b0dbf021d6bb49d4eec855d0953dbc57/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/a9c0fcf7559185da45955bca5e2b3be5/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/a9c0fcf7559185da45955bca5e2b3be5/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:rules:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b532e5cd0860b6b21b2987df2bef0bd4/rules-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:rules:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b532e5cd0860b6b21b2987df2bef0bd4/rules-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test.espresso:espresso-core:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9888a6a44fd40a4649926f8580904143/espresso-core-3.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test.espresso:espresso-core:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9888a6a44fd40a4649926f8580904143/espresso-core-3.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:runner:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/fff8974b7a213eb0cdc33e07fcf3d83b/runner-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:runner:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/fff8974b7a213eb0cdc33e07fcf3d83b/runner-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/6ef940fde7b61fe8020ea2453850ed92/jetified-exoplayer-hls-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/6ef940fde7b61fe8020ea2453850ed92/jetified-exoplayer-hls-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/2358f96540ced770baffe7f2169b3eb1/jetified-exoplayer-dash-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/2358f96540ced770baffe7f2169b3eb1/jetified-exoplayer-dash-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f6a2fe167d5e93ab0219ad6b3f8dfec3/jetified-exoplayer-smoothstreaming-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f6a2fe167d5e93ab0219ad6b3f8dfec3/jetified-exoplayer-smoothstreaming-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/e0b83362804f13afbe404a2dc58a71f2/jetified-exoplayer-core-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/e0b83362804f13afbe404a2dc58a71f2/jetified-exoplayer-core-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f477930cddfad1bf92d63a2055b408c5/jetified-exoplayer-datasource-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/f477930cddfad1bf92d63a2055b408c5/jetified-exoplayer-datasource-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a62808ce0edd83bc217d0634a44cecfd/jetified-exoplayer-extractor-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a62808ce0edd83bc217d0634a44cecfd/jetified-exoplayer-extractor-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a2cee72edee2f2c146c19732402c0414/jetified-exoplayer-decoder-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/a2cee72edee2f2c146c19732402c0414/jetified-exoplayer-decoder-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/4b8f44c27baa4ed64cae5b5edc39b478/jetified-exoplayer-database-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/4b8f44c27baa4ed64cae5b5edc39b478/jetified-exoplayer-database-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/9e7d0918840fb2a76430d96eb73b7770/jetified-exoplayer-common-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/9e7d0918840fb2a76430d96eb73b7770/jetified-exoplayer-common-2.17.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/0f5f6c3fb851664822af6315c3716990/jetified-core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/0f5f6c3fb851664822af6315c3716990/jetified-core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9905b82832c2400a759761b772003ff9/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/9905b82832c2400a759761b772003ff9/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/621cbeaf7781517e70fe64ae699a6053/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/621cbeaf7781517e70fe64ae699a6053/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:monitor:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/39950d30dcad3d40bad2991e2c768e09/monitor-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test:monitor:1.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/39950d30dcad3d40bad2991e2c768e09/monitor-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d47b73d84a1fc0bbacbb05e152e56e7/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d47b73d84a1fc0bbacbb05e152e56e7/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/2933de7aeafb30da2267ac11f74f1b32/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/2933de7aeafb30da2267ac11f74f1b32/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/4d8a8cf5bfaf96c93561a6201954a8f8/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/4d8a8cf5bfaf96c93561a6201954a8f8/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/5316ff5504e9582f145ba68812649340/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/5316ff5504e9582f145ba68812649340/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.7.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ad31e22da0d37470f54fee612592b97b/core-1.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/david/.gradle/caches/transforms-2/files-2.1/b13cb3c74219a3127a6ac6916e4b87cf/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/david/.gradle/caches/transforms-2/files-2.1/b13cb3c74219a3127a6ac6916e4b87cf/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/david/.gradle/caches/transforms-2/files-2.1/987a2744b1f38e4ea84643439148672c/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/david/.gradle/caches/transforms-2/files-2.1/987a2744b1f38e4ea84643439148672c/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d3709b10ea095573ff082d4e794a165/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/3d3709b10ea095573ff082d4e794a165/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ef0702c213bf1e427b3c0444309e541b/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/ef0702c213bf1e427b3c0444309e541b/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/aec4af671d804af6fdd44e335f2e6b2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/aec4af671d804af6fdd44e335f2e6b2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/a6095a02a533b437e1b9609f833b2015/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/david/.gradle/caches/transforms-2/files-2.1/a6095a02a533b437e1b9609f833b2015/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/91adbb8bcba973e7eb04e5231da1ba68/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/91adbb8bcba973e7eb04e5231da1ba68/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/41763c445d5f125faa3cd04f0bd88a91/espresso-idling-resource-3.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] /Users/david/.gradle/caches/transforms-2/files-2.1/41763c445d5f125faa3cd04f0bd88a91/espresso-idling-resource-3.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b08850f8822cbb1fe6b8e9e57c227b41/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/david/.gradle/caches/transforms-2/files-2.1/b08850f8822cbb1fe6b8e9e57c227b41/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/david/Documents/Projets/fitness-app/android/app/src/debug/AndroidManifest.xml
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/david/Documents/Projets/fitness-app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/david/.gradle/caches/transforms-2/files-2.1/0e801fb723be874f49d8ec69e1305238/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/e0b83362804f13afbe404a2dc58a71f2/jetified-exoplayer-core-2.17.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/9e7d0918840fb2a76430d96eb73b7770/jetified-exoplayer-common-2.17.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/9e7d0918840fb2a76430d96eb73b7770/jetified-exoplayer-common-2.17.1/AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.1] /Users/david/.gradle/caches/transforms-2/files-2.1/e0b83362804f13afbe404a2dc58a71f2/jetified-exoplayer-core-2.17.1/AndroidManifest.xml:24:22-76
