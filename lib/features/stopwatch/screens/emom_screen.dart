@@ -40,20 +40,22 @@ class EMOMScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              context.watch<StopwatchProvider>().isWorkoutFinished
-                  ? FinishedIndicator()
-                  : StopwatchIndicator(
-                      onTap: () {
-                        if (provider.isCountdownStopped ||
-                            (provider.isCountdownPaused &&
-                                provider.isStopwatchStopped)) {
-                          provider.startStopwatch();
-                        } else {
-                          provider.playpauseStopwatch();
-                        }
-                      },
-                      child: const StopwatchIndicatorCenter(),
-                    ),
+              RepaintBoundary(
+                child: context.watch<StopwatchProvider>().isWorkoutFinished
+                    ? FinishedIndicator()
+                    : StopwatchIndicator(
+                        onTap: () {
+                          if (provider.isCountdownStopped ||
+                              (provider.isCountdownPaused &&
+                                  provider.isStopwatchStopped)) {
+                            provider.startStopwatch();
+                          } else {
+                            provider.playpauseStopwatch();
+                          }
+                        },
+                        child: const StopwatchIndicatorCenter(),
+                      ),
+              ),
             ],
           ),
         ),

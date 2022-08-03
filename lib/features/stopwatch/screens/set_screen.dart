@@ -26,11 +26,13 @@ class SetScreen extends StatelessWidget {
                         .sets,
                 max: provider.bloc.sets,
               ),
-              context.watch<StopwatchProvider>().isWorkoutFinished
-                  ? FinishedIndicator()
-                  : StopwatchIndicator(
-                      child: const StopwatchIndicatorCenterSet(),
-                    ),
+              RepaintBoundary(
+                child: context.watch<StopwatchProvider>().isWorkoutFinished
+                    ? FinishedIndicator()
+                    : StopwatchIndicator(
+                        child: const StopwatchIndicatorCenterSet(),
+                      ),
+              ),
             ],
           ),
         ),

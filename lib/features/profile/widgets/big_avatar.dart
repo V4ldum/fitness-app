@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/config/index.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class BigAvatar extends StatelessWidget {
             backgroundColor: Palette.primary,
             radius: 97.0,
             backgroundImage: const AssetImage(Images.profilePicturePlaceholder),
-            foregroundImage: NetworkImage(image),
+            foregroundImage: CachedNetworkImageProvider(image),
             onForegroundImageError: (_, __) {
               debugPrint("[x] Profile Avatar: Error");
             },

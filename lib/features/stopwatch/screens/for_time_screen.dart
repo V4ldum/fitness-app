@@ -26,20 +26,22 @@ class ForTimeScreen extends StatelessWidget {
                   current: provider.sets!,
                   max: provider.bloc.sets,
                 ),
-              context.watch<StopwatchProvider>().isWorkoutFinished
-                  ? FinishedIndicator()
-                  : StopwatchIndicator(
-                      onTap: () {
-                        if (provider.isCountdownStopped ||
-                            (provider.isCountdownPaused &&
-                                provider.isStopwatchStopped)) {
-                          provider.startStopwatch();
-                        } else {
-                          provider.playpauseStopwatch();
-                        }
-                      },
-                      child: const StopwatchIndicatorCenter(),
-                    ),
+              RepaintBoundary(
+                child: context.watch<StopwatchProvider>().isWorkoutFinished
+                    ? FinishedIndicator()
+                    : StopwatchIndicator(
+                        onTap: () {
+                          if (provider.isCountdownStopped ||
+                              (provider.isCountdownPaused &&
+                                  provider.isStopwatchStopped)) {
+                            provider.startStopwatch();
+                          } else {
+                            provider.playpauseStopwatch();
+                          }
+                        },
+                        child: const StopwatchIndicatorCenter(),
+                      ),
+              ),
             ],
           ),
         ),

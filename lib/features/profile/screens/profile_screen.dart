@@ -28,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
           text: Strings.logOutAccept,
           onPressed: () {
             context.read<AppWideProvider>().deleteTokens();
+            imageCache.clear();
             Navigator.pushNamedAndRemoveUntil(
               context,
               LoginScreen.route,

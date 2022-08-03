@@ -48,6 +48,7 @@ class _MessagesListState<T extends IMessage> extends State<MessagesList<T>> {
     return Stack(
       children: [
         GroupedListView<T, DateTime>(
+          padding: const EdgeInsets.only(bottom: 20),
           controller: _controller,
           reverse: true,
           order: GroupedListOrder.DESC,

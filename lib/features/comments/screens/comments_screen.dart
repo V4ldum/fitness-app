@@ -84,10 +84,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             return _waitingBuilder();
                           },
                         )
-                      : const ErrorPage(
-                          title: Strings.noCommentErrorHeader,
-                          content: Strings.noCommentErrorBody,
-                          image: Images.comment,
+                      : const SingleChildScrollView(
+                          child: ErrorPage(
+                            title: Strings.noCommentErrorHeader,
+                            content: Strings.noCommentErrorBody,
+                            image: Images.comment,
+                          ),
                         ),
                 ),
               ),
