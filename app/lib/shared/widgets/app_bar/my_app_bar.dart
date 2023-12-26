@@ -1,7 +1,7 @@
 import 'package:fitness_app/config/index.dart';
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget with PreferredSizeWidget {
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isTransparent;
   final Widget? leading;
@@ -21,6 +21,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: isTransparent ? Colors.transparent : Palette.tint1,
       backgroundColor: isTransparent ? Colors.transparent : Palette.tint1,
       elevation: isTransparent ? 0 : 4,
       centerTitle: true,

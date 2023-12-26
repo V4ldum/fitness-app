@@ -39,8 +39,7 @@ class _DayCardState extends State<DayCard> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 15.0, right: 13.0),
+              padding: const EdgeInsets.only(top: 10.0, left: 15.0, right: 13.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,8 +49,8 @@ class _DayCardState extends State<DayCard> {
                     subtitle: widget.program.subtitle,
                   ),
                   if (!widget.program.isRestDay)
-                    SmoothIndicator(
-                      offset: _offset,
+                    AnimatedSmoothIndicator(
+                      activeIndex: _offset.toInt(),
                       count: widget.program.blocs.length,
                       effect: const WormEffect(
                         activeDotColor: Palette.accent,

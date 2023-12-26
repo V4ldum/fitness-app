@@ -1,5 +1,5 @@
 
-#![feature(plugin, decl_macro, proc_macro_hygiene)]
+#![feature(decl_macro, proc_macro_hygiene)]
 #![allow(proc_macro_derive_resolution_fallback, unused_attributes)]
 
 extern crate dotenv;

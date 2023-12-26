@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<AppWideProvider>(
       create: (_) => AppWideProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: Palette.primary,
           colorScheme: ColorScheme.fromSwatch().copyWith(

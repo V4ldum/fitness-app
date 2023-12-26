@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       top: false,
+      bottom: false,
       child: Scaffold(
         body: ChangeNotifierProvider<LoginProvider>(
           create: (_) => LoginProvider(),
